@@ -1,0 +1,104 @@
+#header {
+  height: 132px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  @media screen and (min-width: 1201px) {
+    transition: height 0.3s ease-in-out;
+    .sticky-header & {
+      height: 78px;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    height: 60px;
+  }
+  &:before {
+    content: '';
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    box-shadow: 0 13px 10px -10px rgba(0, 0, 0, 0.05);
+  }
+  .wrapper {
+    padding: 58px 0 26px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media screen and (max-width: $desktop-medium) {
+      padding: 58px 30px 26px;
+    }
+    @media screen and (max-width: 1200px) {
+      padding: 10px 15px;
+    }
+    @media screen and (min-width: 1201px) {
+      transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+      .sticky-header & {
+        padding: 15px 0;
+        @media screen and (max-width: $desktop-medium) {
+          padding: 15px 30px;
+        }
+      }
+    }
+  }
+  .menu-toggle {
+    @media screen and (min-width: 1201px) {
+      display: none;
+    }
+    display: block;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    width: 30px;
+    height: 26px;
+    opacity: 0.8;
+    span {
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background: $textcolor-1;
+      border-radius: 9px;
+      left: 0;
+      &:nth-child(1) {
+        top: 0;
+        transition: top 0.25s ease-in-out, left 0.25s ease-in-out, width 0.25s ease-in-out;
+        .menu-open & {
+          top: 18px;
+          width: 0;
+          left: 50%;
+        }
+      }
+      &:nth-child(2) {
+        top: 12px;
+        transition: transform 0.25s ease-in-out;
+        .menu-open & {
+          transform: rotate(45deg);
+        }
+      }
+      &:nth-child(3) {
+        top: 12px;
+        transition: transform 0.25s ease-in-out;
+        .menu-open & {
+          transform: rotate(-45deg);
+        }
+      }
+      &:nth-child(4) {
+        top: 24px;
+        transition: top 0.25s ease-in-out, left 0.25s ease-in-out, width 0.25s ease-in-out;
+        .menu-open & {
+          top: 18px;
+          width: 0;
+          left: 50%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2018 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="search" unicode="&#xe800;" d="M985-61l-247 248c64 72 98 164 98 259 0 223-187 404-418 404-230 0-418-181-418-404 0-222 188-403 418-403 87 0 169 25 240 73l248-250c11-10 25-16 40-16 14 0 27 5 37 15 22 20 23 53 2 74z m-567 806c171 0 309-134 309-299 0-164-138-298-309-298-170 0-309 134-309 298 0 165 139 299 309 299z" horiz-adv-x="1000" />
+
+<glyph glyph-name="arrow" unicode="&#xe801;" d="M750-67l-717 717a117 117 0 0 0 0 167 117 117 0 0 0 167 0l633-639 634 635a117 117 0 0 0 166 0 117 117 0 0 0 0-163l-716-717a117 117 0 0 0-167 0z" horiz-adv-x="1667" />
+
+<glyph glyph-name="cross-out" unicode="&#xe802;" d="M1000 819l-31 31-469-469-469 469-31-31 469-469-469-469 31-31 469 469 469-469 31 31-469 469z" horiz-adv-x="1000" />
+</font>
+</defs>
+</svg>

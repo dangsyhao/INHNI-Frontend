@@ -11,7 +11,8 @@ const config = {
     src : [
         // 'node_modules/slick-carousel/slick/slick.js',
         // 'node_modules/magnific-popup/dist/jquery.magnific-popup.js',
-        'gulp-includes/js/includes/**/*.js'
+        'gulp-includes/js/includes/**/*.js',
+        'gulp-includes/js/helpers/detect-ie.js'
     ],
 
     plugins : {

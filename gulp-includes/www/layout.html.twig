@@ -65,34 +65,14 @@
             {
               "@context": "https://schema.org",
               "@type": "Organization",
-              "@id": "http://my-website-url.com/#organization",
-              "url": "http://my-organization-or-website-url.com/",
-              "logo": "http://my-website-url.com/path/to/logo.png",
-              "name": "Name of the organization",
+              "@id": "https://www.inhni.com/#organization",
+              "url": "https://www.inhni.com/",
+              "logo": "https://www.inhni.com/assets/images/logo.png",
+              "name": "{{ project_short_name }}",
               "sameAs": [
-                "https://www.facebook.com/my-organization-facebook-page-url/",
-                "https://www.instagram.com/my-organization-instagram-profile-url/",
-                "https://www.youtube.com/channel/my-organization-youtube-channel-url/",
-                "https://www.linkedin.com/company/my-organization-linkedin-profile-url/"
-              ],
-              "contactPoint": [{
-                "@type": "ContactPoint",
-                "telephone": "+33 6 76 76 76 76",
-                "contactType": "customer service",
-                "contactOption": [
-                  "HearingImpairedSupported",
-                  "TollFree"
-                ],
-                "areaServed": [
-                  "FR",
-                  "CHE",
-                  "BEL",
-                  "CA"
-                ],
-                "availableLanguage": [
-                  "French"
-                ]
-              }]
+                "https://www.youtube.com/channel/UCDvqkXL4LvW1gBprOhvsWGw",
+                "https://fr.linkedin.com/company/inhni"
+              ]
             }
         </script>
         {% block favicons %}
@@ -140,6 +120,29 @@
     {% endblock %}
 </head>
 <body class="{% block bodyclass %}{% endblock %}">
+    {% block header %}
+        <header id="header">
+            <div class="wrapper">
+                <div class="logos">
+                    {% block logo %}
+                        <a href="./home.html" title="Revenir à l'accueil" class="logo">
+                            <img src="{{ img_url }}logo.svg" alt="INHNI Consultants et Formateurs logo" />
+                        </a>
+                    {% endblock %}
+                    <a href="https://www.monde-proprete.com/" title="Accéder au site du monde de la propreté" target="_blank" class="proprete">
+                        <img src="{{ img_url }}logo-proprete.svg" alt="Le monde de la propreté logo" />
+                    </a>
+                </div>
+                {% include 'includes/big_menu.twig' %}
+                {% include 'includes/little_menu.twig' %}
+                <form method="POST" class="searchForm_header" action="#" novalidate>
+                    <div class="search-input-container">
+                        <input type="text" placeholder="Recherche..." autocomplete="off" required/>
+                    </div>
+                </form>
+            </div>
+        </header>
+    {% endblock %}
     {% block main %}
         {% block pre_content %}{% endblock %}
         <main id="main-content">
@@ -155,7 +158,7 @@
         {% endfor %}
     {% endblock %}
     {% block fonts %}
-    {#<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">#}
+        <link href="{{ 'https://fonts.googleapis.com/css?family=Lato:400,700,900|Roboto+Condensed:400,700|Roboto:300,400,500|Source+Serif+Pro:600,700'|replace({'|': '|'|url_encode}) }}" rel="stylesheet">
     {% endblock %}
 </body>
 </html>

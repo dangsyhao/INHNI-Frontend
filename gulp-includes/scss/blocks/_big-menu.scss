@@ -1,0 +1,181 @@
+#big_menu {
+  margin: 15px auto 0;
+  transition: margin 0.3s ease-in-out;
+  @media screen and (max-width: $desktop-medium) {
+    margin: 15px 30px 0 auto;
+  }
+  @media screen and (min-width: 1201px) {
+    .sticky-header & {
+      margin: 5px auto 0;
+      @media screen and (max-width: $desktop-medium) {
+        margin: 5px 30px 0 auto;
+      }
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
+  & > ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & > li {
+      margin-right: 45px;
+      & > a {
+        font-size: 17px;
+        font-weight: 900;
+        letter-spacing: 0.57px;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+        transition: color 0.3s ease-in-out;
+        &:after {
+          content: '\E801';
+          @include fontello;
+          margin-left: 10px;
+          flex-shrink: 0;
+          flex-grow: 0;
+          font-size: 6.5px;
+          color: $maincolor-2;
+          transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+          transform-origin: 50% 50%;
+          html:not(.ie10) & {
+            transform: translateY(2.5px);
+          }
+        }
+        span {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          height: 100%;
+          &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 7px;
+            height: 4px;
+            width: 0;
+            transition: width 0.3s ease-in-out;
+            background: $maincolor-4;
+          }
+        }
+      }
+      &:last-of-type {
+        margin-right: 0;
+      }
+      &:hover,
+      &:active {
+        & > a {
+          color: $maincolor-4;
+          &:after {
+            color: $maincolor-4;
+            transform: rotate(180deg);
+            html:not(.ie10) & {
+              transform: translateY(2.5px) rotate(180deg);
+            }
+          }
+          span {
+            &:before {
+              width: 30px;
+            }
+          }
+        }
+        & > .sub_menu {
+          border-color: #E8E9EC;
+          opacity: 1;
+          pointer-events: auto;
+        }
+      }
+      &.current {
+        & > a {
+          color: $maincolor-4;
+          &:after {
+            color: $maincolor-4;
+          }
+        }
+      }
+    }
+  }
+  .sub_menu {
+    position: absolute;
+    top: calc(100% - 14px);
+    background: #fff;
+    border: 1px solid transparent;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    width: 1140px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: border-color 0.3s ease-in-out, opacity 0.3s ease-in-out, top 0.3s ease-in-out;
+    padding: 40px 0 75px 361px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    @media screen and (min-width: 1201px) {
+      .sticky-header & {
+        top: calc(100% - 8px);
+      }
+    }
+    .menu-featured {
+      width: 361px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 65px 0;
+      text-align: center;
+      font-size: 21px;
+      line-height: 26px;
+      letter-spacing: 0.7px;
+      font-family: $font-3;
+      font-weight: 300;
+      background: url('../images/shape.svg') 50% 43.5% no-repeat $maincolor-4;
+    }
+    ul {
+      width: 50%;
+      padding: 0 25.5px;
+      color: #42464D;
+      letter-spacing: 0.16px;
+      line-height: 19px;
+      li {
+        margin-bottom: 18px;
+        font-weight: 700;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+        a {
+          transition: color 0.3s ease-in-out;
+          &:hover,
+          &:active {
+            color: $maincolor-4;
+          }
+        }
+        &.current {
+          a {
+            color: $maincolor-4;
+          }
+        }
+      }
+    }
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 36px;
+      width: 1px;
+      height: calc(100% - 64px);
+      background: rgba(#42464D, 0.3);
+      left: calc(100% - (100% - 361px) / 2 - 1px);
+    }
+  }
+}
