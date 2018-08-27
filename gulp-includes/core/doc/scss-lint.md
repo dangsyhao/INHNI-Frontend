@@ -17,7 +17,7 @@ p {
 // sass-lint:disable border-zero, quotes
 p {
   border: none; // No lint reported
-  content: "hello"; // No lint reported
+  content: 'hello'; // No lint reported
 }
 ```
 
@@ -76,7 +76,6 @@ a {
 - [Available Gulp commands](./gulp-commands.md)
 - [Use external libraries with Yarn](./external-libraries.md)
 - [SCSS custom functions, mixins, image dimensions, inline assets](./scss-functions.md)
-- [SCSS lint - How to bypass gulp check-scss warnings](./scss-lint.md)
 - [JSHint - How to bypass gulp check-js warnings](./jshint.md)
 - [Modernizr features detection](./modernizr.md)
 - [Plugin: Built-in JavaScript viewport informations (gulp_display)](./viewport-framework.md)

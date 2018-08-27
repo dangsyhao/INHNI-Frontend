@@ -12,12 +12,14 @@ const argv = require('minimist')(process.argv.slice(2)),
     rls = require('remove-leading-slash');
 
 module.exports = {
-    generate : function (source, fileConfig, output) {
+    generate : function (source, fileConfig) {
         var success = true;
         var codeResult = false;
 
         function generateJavaScript(insertBefore, src, success) {
-            var output_path = rls(fileConfig.output_path);
+            if (fileConfig.output_path) {
+                var output_path = rls(fileConfig.output_path);
+            }
             var filename = upath.basename(source);
             var code = {};
             src.forEach(function (filePath) {
@@ -30,12 +32,12 @@ module.exports = {
                     preamble : insertBefore
                 }
             };
-            if (argv.dev && output) {
+            if (argv.dev && fileConfig.output_path) {
                 options.sourceMap = {
                     filename : filename,
                     url : filename + '.map',
                     root : upath.relative(
-                        output_path,
+                        upath.dirname(output_path),
                         './'
                     )
                 };
@@ -58,11 +60,11 @@ module.exports = {
                 console.log(os.EOL);
             } else {
                 codeResult = result.code;
-                if (output) {
+                if (fileConfig.output_path) {
                     try {
-                        fs.outputFileSync(upath.join(output_path, filename), codeResult);
+                        fs.outputFileSync(output_path, codeResult);
                         if (argv.dev) {
-                            fs.outputFileSync(upath.join(output_path, filename + '.map'), result.map);
+                            fs.outputFileSync(output_path + '.map', result.map);
                         }
                     } catch (err) {
                         success = false;
@@ -187,7 +189,7 @@ module.exports = {
         var success = true;
         var firstFile = true;
         new Promise(function (resolve) {
-            glob.sync(rls(upath.join(rls(config.generateJs.src_path), 'includes', '**', '*.js'))).forEach(function (file) {
+            glob.sync(rls(upath.join(rls(config.generateJs.src_path), '**', '_*.js'))).forEach(function (file) {
                 if (fs.pathExistsSync(file)) {
                     var data = fs.readFileSync(file, 'utf8');
                     jshint(data);

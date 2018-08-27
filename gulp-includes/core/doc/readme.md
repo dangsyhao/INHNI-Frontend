@@ -37,7 +37,7 @@ If you have any issue with `yarn install` on Windows, run the CLI as administrat
 
 # Configuration
 
-Everything you need is in */gulp-includes/gulp-configuration.js*.
+Everything you need is in *gulp-includes/gulp-configuration.js*.
 
 # Documentation
 

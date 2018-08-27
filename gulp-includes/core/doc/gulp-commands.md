@@ -18,7 +18,7 @@
 
 `gulp html [--dev]` : Builds html templates and perform W3C validation.
 
-`gulp gitignore` : Builds custom .gitignore according to */gulp-includes/.gitignore*.
+`gulp gitignore` : Builds custom .gitignore according to *gulp-includes/.gitignore*.
 
 ### On demand
 
@@ -33,7 +33,6 @@
 # Summary
 
 - [Getting Started](./readme.md)
-- [Available Gulp commands](./gulp-commands.md)
 - [Use external libraries with Yarn](./external-libraries.md)
 - [SCSS custom functions, mixins, image dimensions, inline assets](./scss-functions.md)
 - [SCSS lint - How to bypass gulp check-scss warnings](./scss-lint.md)

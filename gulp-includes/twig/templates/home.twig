@@ -6,7 +6,6 @@
  * - project_name
  * - project_short_name
  * - css_files
- * - css_url
  * - js_files
  * - html_files
  * - favicon_url
@@ -18,8 +17,11 @@
  */
 #}
 
+{# Compiled final .html file destination. #}
+{# Path must be relative to the directory set in your gulp-includes/gulp-configuration.js #}
+{% set output_path = './home.html' %}
 
-{% extends '../layout.html.twig' %}
+{% extends '../_layout.html.twig' %}
 
 {% block htmlclass %}page-home-html{% endblock %}
 {% block bodyclass %}page-home-body{% endblock %}

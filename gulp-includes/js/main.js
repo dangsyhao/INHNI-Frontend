@@ -1,7 +1,7 @@
 const config = {
 
     /* Compiled Bundle destination */
-    output_path : '/public/assets/js/',
+    output_path : '/public/assets/js/main.js',
 
     /* Include jQuery in the bundle; true/false */
     jQuery : true,
@@ -12,7 +12,7 @@ const config = {
         // 'node_modules/slick-carousel/slick/slick.js',
         // 'node_modules/magnific-popup/dist/jquery.magnific-popup.js',
         'gulp-includes/js/includes/**/*.js',
-        'gulp-includes/js/helpers/detect-ie.js'
+        'gulp-includes/js/helpers/_detect-ie.js'
     ],
 
     plugins : {

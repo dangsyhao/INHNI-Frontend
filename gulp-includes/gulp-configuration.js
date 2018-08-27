@@ -56,6 +56,10 @@ const config = {
         // 'other custom link': 'http://other-link.com/'
     },
 
+    /* Do not change this value unless you know what you are doing.  */
+    /* Will be documented soon™ */
+    extension_mode: false,
+
     /*
     ###########################################
     ######### JAVASCRIPT CONFIGURATION ########
@@ -75,14 +79,7 @@ const config = {
 
     generateCss: {
         /* Enable or disable Css compilation */
-        enable: true,
-
-        /* Compiled CSS file destination */
-        output_path: '/public/assets/css/',
-
-        /* Every asset (image or font) called with the url() statement from a node_modules/*.CSS stylesheet will be
-         automatically base64 encoded according to this weight limit (in KB). */
-        auto_base64_node_modules_css_weight_limit: 5,
+        enable: true
     },
 
     /*
@@ -95,8 +92,17 @@ const config = {
         /* Enable or disable Html compilation */
         enable: true,
 
-        /* Compiled HTML files destination */
-        output: '/public/'
+        /* Enable generation of the project presentation page (index.html) */
+        /* if enable is set to false then enable_index will be false. */
+        enable_index: true,
+
+        /* Enable or disable browserSync when gulp watch is called */
+        browsersync: true,
+
+        /* Default compiled HTML files destination. */
+        /* When setting {% set output_path = 'folder/file.html' %} in your twig file, result is : */
+        /* public/folder/file.html */
+        output: 'public/'
     },
 
     /*
@@ -136,17 +142,6 @@ const config = {
 
         /* Main color used for iOS/Android's UI  */
         main_color: '#ffffff'
-    },
-
-    /*
-     ###########################################
-     ######## BROWSERSYNC CONFIGURATION ########
-     ###########################################
-     */
-
-    browserSync: {
-        /* https://browsersync.io/docs/options#option-https (true/false/object) */
-        https: true
     }
 };
 

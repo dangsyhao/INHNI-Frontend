@@ -13,7 +13,7 @@ to load the images as they enter the viewport, drastically improving your websit
 
 ### Installation
 
-Set the enable option to `true` in */gulp-includes/js/my-file.js* :
+Set the enable option to `true` in *gulp-includes/js/my-file.js* :
 
 ```js
 plugins: {
@@ -160,7 +160,7 @@ However, It depends on [desandro's imagesLoaded library](https://imagesloaded.de
 
 1) `yarn add imagesloaded` (Add --no-bin-links if on VirtualBox.)
 
-2) Import the script in */gulp-includes/js/my-file.js* : `'node_modules/imagesloaded/imagesloaded.pkgd.min.js'`
+2) Import the script in *gulp-includes/js/my-file.js* : `'node_modules/imagesloaded/imagesloaded.pkgd.min.js'`
 
 :+1: :rocket: :+1: :rocket: :+1: :rocket: :+1: :rocket: :+1: :rocket: :+1: :rocket: :+1:
 
@@ -174,7 +174,6 @@ However, It depends on [desandro's imagesLoaded library](https://imagesloaded.de
 - [JSHint - How to bypass gulp check-js warnings](./jshint.md)
 - [Modernizr features detection](./modernizr.md)
 - [Plugin: Built-in JavaScript viewport informations (gulp_display)](./viewport-framework.md)
-- [Plugin: Responsive/Retina/Lazyload image](./responsive-image-plugin.md)
 - [Plugin: Lazyload Iframe](./lazyload-iframe.md)
 - [Plugin: Detect New Html Elements](./detect-new-html-elements.md)
 - [CMS/Framework Integration](./cms-framework.md)

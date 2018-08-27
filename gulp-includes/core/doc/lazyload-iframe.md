@@ -9,7 +9,7 @@ This plugins allows you to load iframes as they enter the viewport, drastically 
 
 ### Installation
 
-Set the enable option to `true` in */gulp-includes/js/my-file.js* :
+Set the enable option to `true` in *gulp-includes/js/my-file.js* :
 
 ```js
 plugins: {
@@ -82,6 +82,5 @@ When using lazyload, you may need to detect when the iframe has loaded. If so, y
 - [Modernizr features detection](./modernizr.md)
 - [Plugin: Built-in JavaScript viewport informations (gulp_display)](./viewport-framework.md)
 - [Plugin: Responsive/Retina/Lazyload image](./responsive-image-plugin.md)
-- [Plugin: Lazyload Iframe](./lazyload-iframe.md)
 - [Plugin: Detect New Html Elements](./detect-new-html-elements.md)
 - [CMS/Framework Integration](./cms-framework.md)

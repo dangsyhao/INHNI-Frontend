@@ -1,6 +1,6 @@
 # Modernizr features detection
 
-*/gulp-includes/js/my-file.js*
+*gulp-includes/js/my-file.js*
 
 ```js
 /* Include Modernizr tests at the beginning of the bundle if feature-detects is filled. */
@@ -9,14 +9,14 @@ plugins: {
     modernizr: {
         /* https://modernizr.com/download?video-videoloop */
         'feature-detects': [
-            "test/video",
-            "test/video/loop"
+            'test/video',
+            'test/video/loop'
         ]
     }
 }
 ```
 
-*/gulp-includes/js/includes/example.js*
+*gulp-includes/js/includes/example.js*
 
 ```js
 if (Modernizr.video.h264) {
@@ -35,7 +35,6 @@ if (Modernizr.videoloop) {
 - [SCSS custom functions, mixins, image dimensions, inline assets](./scss-functions.md)
 - [SCSS lint - How to bypass gulp check-scss warnings](./scss-lint.md)
 - [JSHint - How to bypass gulp check-js warnings](./jshint.md)
-- [Modernizr features detection](./modernizr.md)
 - [Plugin: Built-in JavaScript viewport informations (gulp_display)](./viewport-framework.md)
 - [Plugin: Responsive/Retina/Lazyload image](./responsive-image-plugin.md)
 - [Plugin: Lazyload Iframe](./lazyload-iframe.md)

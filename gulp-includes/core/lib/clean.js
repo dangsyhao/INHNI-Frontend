@@ -41,27 +41,68 @@ module.exports = {
                             paths_to_erase.push(rls('./.gitignore'));
                         }
                         if (config.generateJs.enable) {
-                            var jsFiles = glob.sync(rls(upath.join(rls(config.generateJs.src_path), '*.js')));
+                            var jsFiles = glob.sync(rls(upath.join(rls(config.generateJs.src_path), '**', '*.js')), {
+                                ignore : [
+                                    '**/_*.js'
+                                ]
+                            });
                             jsFiles.forEach(function (file) {
-                                var filename = upath.basename(file);
-                                delete require.cache[require.resolve('../../js/' + filename)];
-                                var fileConfig = require('../../js/' + filename);
+                                delete require.cache[require.resolve(upath.relative(__dirname, file))];
+                                var fileConfig = require(upath.relative(__dirname, file));
                                 fileConfig = JSON.parse(JSON.stringify(fileConfig));
                                 paths_to_erase.push(
-                                    rls(upath.join(rls(fileConfig.output_path), filename)),
-                                    rls(upath.join(rls(fileConfig.output_path), filename + '.map'))
+                                    rls(fileConfig.output_path),
+                                    rls(fileConfig.output_path) + '.map'
                                 );
                             });
                         }
+                        if (config.extension_mode) {
+                            var manifests = glob.sync(rls(upath.join(rls(config.generateHtml.output), 'manifest.*.json')));
+                            manifests.forEach(function (file) {
+                                var browser = upath.basename(file, '.json').replace('manifest.', '') + '-extension';
+                                paths_to_erase.push(upath.join('./', browser));
+                            });
+                        }
                         if (config.generateCss.enable) {
-                            paths_to_erase.push(
-                                rls(upath.join(rls(config.generateCss.output_path), '*.css')),
-                                rls(upath.join(rls(config.generateCss.output_path), '*.css.map'))
-                            );
+                            var cssFiles = glob.sync(rls(upath.join(rls(config.generateCss.src_path), '**', '*.scss')), {
+                                ignore : [
+                                    "**/_*.scss"
+                                ]
+                            });
+                            cssFiles.forEach(function (file) {
+                                var fileContent = fs.readFileSync(file, 'utf8');
+                                var regex = new RegExp("\\$output_path:\\s*['\"]?(.+?)['\"]?\\s*;", 'gmiu');
+                                var matches = regex.exec(fileContent);
+                                var destination = false;
+                                if (matches !== null) {
+                                    destination = rls(matches[1]);
+                                }
+                                if (destination) {
+                                    paths_to_erase.push(destination);
+                                    paths_to_erase.push(destination + '.map');
+                                }
+                            });
                         }
                         if (config.generateHtml.enable) {
-                            paths_to_erase.push(rls(upath.join(rls(config.generateHtml.output), '*.html')));
-                            paths_to_erase.push(rls(upath.join(rls(config.generateHtml.output), 'gulp-documentation')));
+                            if (config.generateHtml.enable_index) {
+                                paths_to_erase.push(rls(upath.join(rls(config.generateHtml.output), 'index.html')));
+                                paths_to_erase.push(rls(upath.join(rls(config.generateHtml.output), 'gulp-documentation')));
+                            }
+                            var htmlFiles = glob.sync(rls(upath.join(rls(config.generateHtml.src), '**', '*.twig')), {
+                                ignore : [
+                                    "**/_*.twig"
+                                ]
+                            });
+                            htmlFiles.forEach(function (file) {
+                                var destination = rls(upath.join(rls(config.generateHtml.output), upath.basename(file, '.twig') + '.html'));
+                                var fileContent = fs.readFileSync(file, 'utf8');
+                                var regex = new RegExp("\\{%\\s*set\\s*output_path\\s*=\\s*['\"]?(.+?)['\"]?\\s*%\\}", 'gmiu');
+                                var matches = regex.exec(fileContent);
+                                if (matches !== null) {
+                                    destination = rls(upath.join(upath.dirname(destination), rls(matches[1])));
+                                }
+                                paths_to_erase.push(destination);
+                            });
                         }
                         paths_to_erase.forEach(function (filepath) {
                             glob.sync(filepath).forEach(function (realfilepath) {

@@ -1,7 +1,7 @@
 const mainConfig = require('../../gulp-configuration');
 
 const config = {
-    output_path : mainConfig.generateHtml.output,
+    output_path : false,
     jQuery : true,
     src : [
         'gulp-includes/core/js/includes/**/*.js'
@@ -17,7 +17,6 @@ const config = {
         lazyloadIframe: false,
         dev : false
     }
-
 };
 
 module.exports = config;

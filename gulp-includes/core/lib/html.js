@@ -25,30 +25,33 @@ module.exports = {
         var sourceFilename = upath.basename(source);
         var favicon_url = false;
         if (fs.pathExistsSync(rls(config.generateFavicon.output))) {
-            favicon_url = upath.normalize(upath.relative(destination, rls(config.generateFavicon.output)));
+            favicon_url = upath.normalize(upath.relative(upath.dirname(destination), rls(config.generateFavicon.output)));
             if (favicon_url.substr(favicon_url.length - 1) != '/') {
                 favicon_url = favicon_url + '/';
             }
         }
-        var img_url = upath.normalize(upath.relative(destination, rls(config.generateImages.folder)));
+        var img_url = upath.normalize(upath.relative(upath.dirname(destination), rls(config.generateImages.folder)));
         if (img_url.substr(img_url.length - 1) != '/') {
             img_url = img_url + '/';
         }
-        var img_gulp_demo = upath.normalize(upath.relative(destination, rls('gulp-includes/core/images')));
+        var img_gulp_demo = upath.normalize(upath.relative(upath.dirname(destination), rls('gulp-includes/core/images')));
         if (img_gulp_demo.substr(img_gulp_demo.length - 1) != '/') {
             img_gulp_demo = img_gulp_demo + '/';
         }
         var js_files = false;
         if (config.generateJs.enable) {
-            var jsFiles = glob.sync(rls(upath.join(rls(config.generateJs.src_path), '*.js')));
+            var jsFiles = glob.sync(rls(upath.join(rls(config.generateJs.src_path), '**', '*.js')), {
+                ignore : [
+                    '**/_*.js'
+                ]
+            });
             if (jsFiles.length) {
                 js_files = [];
                 jsFiles.forEach(function (file) {
-                    var filename = upath.basename(file, '.js');
-                    delete require.cache[require.resolve('../../js/' + filename + '.js')];
+                    delete require.cache[require.resolve(upath.relative(__dirname, file))];
                     js_files.push({
-                        filename : filename,
-                        url : upath.normalize(upath.relative(destination, rls(upath.join(rls(JSON.parse(JSON.stringify(require('../../js/' + filename + '.js'))).output_path), filename + '.js'))))
+                        filename : upath.basename(file, '.js'),
+                        url : upath.normalize(upath.relative(upath.dirname(destination), rls(JSON.parse(JSON.stringify(require(upath.relative(__dirname, file)))).output_path)))
                     });
                 });
                 js_files = _.sortBy(js_files, 'filename');
@@ -56,28 +59,52 @@ module.exports = {
         }
         var css_files = false;
         if (config.generateJs.enable) {
-            var cssFiles = glob.sync(rls(upath.join(rls(config.generateCss.src_path), '*.scss')));
+            var cssFiles = glob.sync(rls(upath.join(rls(config.generateCss.src_path), '**', '*.scss')), {
+                ignore : [
+                    '**/_*.scss'
+                ]
+            });
             if (cssFiles.length) {
                 css_files = [];
                 cssFiles.forEach(function (file) {
                     var filename = upath.basename(file, '.scss');
-                    css_files.push({
-                        filename : filename,
-                        url : upath.normalize(upath.relative(destination, rls(upath.join(rls(config.generateCss.output_path), filename + '.css'))))
-                    });
+                    var fileContent = fs.readFileSync(file, 'utf8');
+                    var regex = new RegExp("\\$output_path:\\s*['\"]?(.+?)['\"]?\\s*;", 'gmiu');
+                    var matches = regex.exec(fileContent);
+                    var cssDestination = false;
+                    if (matches !== null) {
+                        cssDestination = rls(matches[1]);
+                    }
+                    if (cssDestination) {
+                        css_files.push({
+                            filename : filename,
+                            url : upath.normalize(upath.relative(upath.dirname(destination), cssDestination))
+                        });
+                    }
                 });
                 css_files = _.sortBy(css_files, 'filename');
             }
         }
         var html_files = false;
-        var templatesfiles = glob.sync(rls(upath.join(rls(config.generateHtml.src), 'templates', '**', '*.twig')));
+        var templatesfiles = glob.sync(rls(upath.join(rls(config.generateHtml.src), '**', '*.twig')), {
+            ignore : [
+                "**/_*.twig"
+            ]
+        });
         if (templatesfiles.length) {
             html_files = [];
             templatesfiles.forEach(function (html_file) {
                 var filename = upath.basename(html_file, '.twig');
+                var htmldestination = rls(upath.join(rls(config.generateHtml.output), upath.basename(html_file, '.twig') + '.html'));
+                var htmlfileContent = fs.readFileSync(html_file, 'utf8');
+                var regex = new RegExp("\\{%\\s*set\\s*output_path\\s*=\\s*['\"]?(.+?)['\"]?\\s*%\\}", 'gmiu');
+                var matches = regex.exec(htmlfileContent);
+                if (matches !== null) {
+                    htmldestination = rls(upath.join(upath.dirname(htmldestination), rls(matches[1])));
+                }
                 html_files.push({
                     filename : filename,
-                    url : upath.normalize(upath.relative(destination, rls(upath.join(destination, filename + '.html'))))
+                    url : upath.normalize(upath.relative(rls(config.generateHtml.output), htmldestination))
                 });
             });
             html_files = _.sortBy(html_files, 'filename');
@@ -99,21 +126,20 @@ module.exports = {
         var css_print_code_demo = false;
         if (sourceFilename == 'index.twig') {
             var js_code_demo_path = './gulp-includes/core/js/gulp-index.js';
-            var js_code_demo_filename = upath.basename(js_code_demo_path);
-            delete require.cache[require.resolve('../js/' + js_code_demo_filename)];
-            var fileConfig = require('../js/' + js_code_demo_filename);
+            delete require.cache[require.resolve(upath.relative(__dirname, js_code_demo_path))];
+            var fileConfig = require(upath.relative(__dirname, js_code_demo_path));
             fileConfig = JSON.parse(JSON.stringify(fileConfig));
-            var result = javascript.generate(rls(js_code_demo_path), fileConfig, false);
+            var result = javascript.generate(rls(js_code_demo_path), fileConfig);
             if (result.code && result.success) {
                 js_code_demo = result.code;
             }
             var css_code_demo_path = './gulp-includes/core/scss/gulp-index.scss';
-            var result = css.generate(rls(css_code_demo_path), false, false);
+            var result = css.generate(rls(css_code_demo_path), false, 2000);
             if (result.code && result.success) {
                 css_code_demo = result.code;
             }
             var css_print_code_demo_path = './gulp-includes/core/scss/gulp-print.scss';
-            var result = css.generate(rls(css_print_code_demo_path), false, false);
+            var result = css.generate(rls(css_print_code_demo_path), false, 2000);
             if (result.code && result.success) {
                 css_print_code_demo = result.code;
             }
@@ -140,7 +166,7 @@ module.exports = {
                     styles += ' </style>';
                     var fileHtml = converter.makeHtml(fileContent).replace(new RegExp('src="../images/', 'g'), 'src="' + img_gulp_demo).replace(new RegExp('.md"', 'g'), '.html"').replace(new RegExp('<body>', 'g'), '<body class="markdown-body">' + styles);
                     try {
-                        fs.outputFileSync(upath.join(rls(destination), upath.basename(source).replace('.md', '.html')), fileHtml);
+                        fs.outputFileSync(destination, fileHtml);
                     } catch (err) {
                         success = false;
                         notifier.notify({
@@ -177,7 +203,6 @@ module.exports = {
                     favicon_url : favicon_url,
                     css_files : css_files,
                     js_files : js_files,
-                    css_url : upath.normalize(upath.relative(rls(destination), rls(config.generateCss.output_path))),
                     html_files : html_files,
                     project_name : config.project_name.trim(),
                     project_short_name : config.project_short_name.trim(),
@@ -209,7 +234,7 @@ module.exports = {
                     }
                     module.exports.beautifyOrMinify(html, function (result) {
                         try {
-                            fs.outputFileSync(upath.join(rls(destination), upath.basename(source).replace('.twig', '.html')), result);
+                            fs.outputFileSync(destination, result);
                         } catch (err) {
                             success = false;
                             notifier.notify({

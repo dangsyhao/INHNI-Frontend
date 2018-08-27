@@ -17,17 +17,20 @@ const javascript = require('../lib/javascript'),
     browserSync = require('browser-sync').get('BrowserSync Frontend Boilerplate : ' + config.project_name);
 
 module.exports = function (done) {
-    var jsFiles = glob.sync(rls(upath.join(rls(config.generateJs.src_path), '*.js')));
+    var jsFiles = glob.sync(rls(upath.join(rls(config.generateJs.src_path), '**', '*.js')), {
+        ignore : [
+            '**/_*.js'
+        ]
+    });
     jsFiles.forEach(function (file, index) {
-        var filename = upath.basename(file);
-        delete require.cache[require.resolve('../../js/' + filename)];
-        var fileConfig = require('../../js/' + filename);
+        delete require.cache[require.resolve(upath.relative(__dirname, file))];
+        var fileConfig = require(upath.relative(__dirname, file));
         fileConfig = JSON.parse(JSON.stringify(fileConfig));
         if (!argv.dev) {
-            fs.removeSync(rls(upath.join(rls(fileConfig.output_path), filename.replace('.js', '') + '.js.map')));
+            fs.removeSync(rls(fileConfig.output_path) + '.map');
         }
-        var result = javascript.generate(rls(upath.join(rls(config.generateJs.src_path), filename)), fileConfig, true);
-        if (argv.reload && config.generateHtml.enable && result.success && argv._[0] === 'watch') {
+        var result = javascript.generate(file, fileConfig);
+        if (argv.reload && config.generateHtml.enable && result.success && argv._[0] === 'watch' && browserSync.instance.active) {
             browserSync.stream();
         }
         if (index === jsFiles.length - 1) {

@@ -12,29 +12,68 @@ module.exports = {
         var success = true;
         var gitIgnoreRules = '';
         var source = upath.join('./', 'gulp-includes', '.gitignore');
+        if (config.extension_mode) {
+            var manifests = glob.sync(rls(upath.join(rls(config.generateHtml.output), 'manifest.*.json')));
+            manifests.forEach(function (file) {
+                var browser = upath.basename(file, '.json').replace('manifest.', '') + '-extension/';
+                gitIgnoreRules += browser + os.EOL;
+            });
+        }
         if (config.generateHtml.enable) {
-            gitIgnoreRules += rls(upath.join(rls(config.generateHtml.output), '*.html')) + os.EOL;
-            gitIgnoreRules += rls(upath.join(rls(config.generateHtml.output), 'gulp-documentation', '**', '*.html')) + os.EOL;
+            if (config.generateHtml.enable_index) {
+                gitIgnoreRules += rls(upath.join(rls(config.generateHtml.output), 'index.html')) + os.EOL;
+                gitIgnoreRules += rls(upath.join(rls(config.generateHtml.output), 'gulp-documentation', '**', '*.html')) + os.EOL;
+            }
+            var htmlFiles = glob.sync(rls(upath.join(rls(config.generateHtml.src), '**', '*.twig')), {
+                ignore : [
+                    "**/_*.twig"
+                ]
+            });
+            htmlFiles.forEach(function (file) {
+                var destination = rls(upath.join(rls(config.generateHtml.output), upath.basename(file, '.twig') + '.html'));
+                var fileContent = fs.readFileSync(file, 'utf8');
+                var regex = new RegExp("\\{%\\s*set\\s*output_path\\s*=\\s*['\"]?(.+?)['\"]?\\s*%\\}", 'gmiu');
+                var matches = regex.exec(fileContent);
+                if (matches !== null) {
+                    destination = rls(upath.join(upath.dirname(destination), rls(matches[1])));
+                }
+                gitIgnoreRules += destination + os.EOL;
+            });
         }
         if (config.generateCss.enable) {
             var css_Files = '';
-            var cssFiles = glob.sync(rls(upath.join(rls(config.generateCss.src_path), '*.scss')));
+            var cssFiles = glob.sync(rls(upath.join(rls(config.generateCss.src_path), '**', '*.scss')), {
+                ignore : [
+                    "**/_*.scss"
+                ]
+            });
             cssFiles.forEach(function (file) {
-                var filename = upath.basename(file).replace('.scss', '');
-                css_Files += rls(upath.join(rls(config.generateCss.output_path), filename + '.css')) + os.EOL +
-                    rls(upath.join(rls(config.generateCss.output_path), filename + '.css.map')) + os.EOL;
+                var fileContent = fs.readFileSync(file, 'utf8');
+                var regex = new RegExp("\\$output_path:\\s*['\"]?(.+?)['\"]?\\s*;", 'gmiu');
+                var matches = regex.exec(fileContent);
+                var destination = false;
+                if (matches !== null) {
+                    destination = rls(matches[1]);
+                }
+                if (destination) {
+                    css_Files += rls(destination) + os.EOL +
+                        rls(destination + '.map') + os.EOL;
+                }
             });
             gitIgnoreRules += css_Files;
         }
         if (config.generateJs.enable) {
-            var jsFiles = glob.sync(rls(upath.join(rls(config.generateJs.src_path), '*.js')));
+            var jsFiles = glob.sync(rls(upath.join(rls(config.generateJs.src_path), '**', '*.js')), {
+                ignore : [
+                    '**/_*.js'
+                ]
+            });
             jsFiles.forEach(function (file) {
-                var filename = upath.basename(file);
-                delete require.cache[require.resolve('../../js/' + filename)];
-                var fileConfig = require('../../js/' + filename);
+                delete require.cache[require.resolve(upath.relative(__dirname, file))];
+                var fileConfig = require(upath.relative(__dirname, file));
                 fileConfig = JSON.parse(JSON.stringify(fileConfig));
-                gitIgnoreRules += rls(upath.join(rls(fileConfig.output_path), filename + '.map')) + os.EOL +
-                    rls(upath.join(rls(fileConfig.output_path), filename)) + os.EOL;
+                gitIgnoreRules += rls(fileConfig.output_path) + '.map' + os.EOL +
+                    rls(fileConfig.output_path) + os.EOL;
             });
         }
         if (fs.pathExistsSync(source)) {

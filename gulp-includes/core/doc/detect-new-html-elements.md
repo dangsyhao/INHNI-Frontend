@@ -4,7 +4,7 @@ This plugins allows you to detect html elements as they're added to the document
 
 ### Installation
 
-Set the enable option to `true` in */gulp-includes/js/my-file.js* :
+Set the enable option to `true` in *gulp-includes/js/my-file.js* :
 
 ```js
 plugins: {
@@ -51,5 +51,4 @@ plugins: {
 - [Plugin: Built-in JavaScript viewport informations (gulp_display)](./viewport-framework.md)
 - [Plugin: Responsive/Retina/Lazyload image](./responsive-image-plugin.md)
 - [Plugin: Lazyload Iframe](./lazyload-iframe.md)
-- [Plugin: Detect New Html Elements](./detect-new-html-elements.md)
 - [CMS/Framework Integration](./cms-framework.md)

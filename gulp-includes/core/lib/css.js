@@ -46,83 +46,90 @@ if (!argv.dev) {
 }
 
 module.exports = {
-    generate : function (source, destination, output) {
+    generate : function (source, destination, base64_node_modules) {
         var success = true;
         var cssResult = false;
         var sourcemap = false;
-        if (argv.dev && output) {
+        if (argv.dev && destination) {
             sourcemap = rls(upath.join(destination, upath.basename(source).replace(/\.scss|\.sass/, '') + '.css.map'));
         }
         try {
-
             var outFile = false;
-            if (output) {
+            if (destination) {
                 outFile = rls(upath.join(destination, upath.basename(source).replace(/\.scss|\.sass/, '') + '.css'));
             }
             var result = sass.renderSync({
                 file : source,
-                includePaths: [require('bourbon').includePaths],
+                includePaths : [require('bourbon').includePaths],
                 importer : [
                     magicImporter(),
                     function autoBase64nodemoduleStuffs(url, prev) {
-                        url = rls(url);
-                        if (url.indexOf('node_modules') > -1) {
-                            var filepath = rls(upath.relative(upath.resolve(__dirname, '..', '..', '..'), upath.resolve(upath.resolve(prev, '..'), url)));
-                            var fileext = upath.extname(filepath);
-                            if (fileext == '.scss') {
-                                return null;
-                            } else if (fileext == '.sass') {
-                                return null;
-                            }
-                            if (fileext != '.css') {
-                                filepath = filepath + '.css';
-                                fileext = '.css';
-                            }
-                            if (fs.pathExistsSync(filepath)) {
-                                if (fileext == '.css') {
-                                    var filecontent = fs.readFileSync(filepath, 'utf8');
-                                    var regex = new RegExp('url\\(.*?\\)', 'gmiu');
-                                    var matches = filecontent.match(regex);
-                                    if (matches) {
-                                        matches.forEach(function (elem) {
-                                            var url = elem.replace(new RegExp('url', 'g'), '').replace(new RegExp('\'', 'g'), '').replace(new RegExp('"', 'g'), '').replace(new RegExp('\\(', 'g'), '').replace(new RegExp('\\)', 'g'), '').trim();
-                                            var indexOfHash = url.lastIndexOf('?#');
-                                            if (indexOfHash > -1) {
-                                                url = url.substr(0, indexOfHash);
-                                            }
-                                            indexOfHash = url.lastIndexOf('#');
-                                            if (indexOfHash > -1) {
-                                                url = url.substr(0, indexOfHash);
-                                            }
-                                            url = upath.resolve(upath.dirname(filepath), url.trim());
-                                            if (fs.pathExistsSync(url)) {
-                                                var weight = fs.statSync(url).size;
-                                                if (weight <= config.generateCss.auto_base64_node_modules_css_weight_limit * 1000) {
-                                                    let datauri = new Datauri(url);
-                                                    filecontent = filecontent.split(elem).join('url(' + datauri.content + ')');
-                                                } else {
-                                                    log.warn('WARNING! The asset ' + url + ' won\'t be base64 encoded because it exceeds the weight limit of ' + config.generateCss.auto_base64_node_modules_css_weight_limit + ' KB.');
-                                                    log.warn('You may want to increase this limit set in the gulp-includes/gulp-configuration.js or copy the asset relatively to ' + outFile + '.');
-                                                }
-                                            }
-                                        });
+                        if (base64_node_modules) {
+                            if (base64_node_modules > 0) {
+                                url = rls(url);
+                                if (url.indexOf('node_modules') > -1) {
+                                    var filepath = rls(upath.relative(upath.resolve(__dirname, '..', '..', '..'), upath.resolve(upath.resolve(prev, '..'), url)));
+                                    var fileext = upath.extname(filepath);
+                                    if (fileext == '.scss') {
+                                        return null;
+                                    } else if (fileext == '.sass') {
+                                        return null;
                                     }
-                                    return {
-                                        contents : filecontent
-                                    };
+                                    if (fileext != '.css') {
+                                        filepath = filepath + '.css';
+                                        fileext = '.css';
+                                    }
+                                    if (fs.pathExistsSync(filepath)) {
+                                        if (fileext == '.css') {
+                                            var filecontent = fs.readFileSync(filepath, 'utf8');
+                                            var regex = new RegExp('url\\(.*?\\)', 'gmiu');
+                                            var matches = filecontent.match(regex);
+                                            if (matches !== null) {
+                                                matches.forEach(function (elem) {
+                                                    var url = elem.replace(new RegExp('url', 'g'), '').replace(new RegExp('\'', 'g'), '').replace(new RegExp('"', 'g'), '').replace(new RegExp('\\(', 'g'), '').replace(new RegExp('\\)', 'g'), '').trim();
+                                                    var indexOfHash = url.lastIndexOf('?#');
+                                                    if (indexOfHash > -1) {
+                                                        url = url.substr(0, indexOfHash);
+                                                    }
+                                                    indexOfHash = url.lastIndexOf('#');
+                                                    if (indexOfHash > -1) {
+                                                        url = url.substr(0, indexOfHash);
+                                                    }
+                                                    url = upath.resolve(upath.dirname(filepath), url.trim());
+                                                    if (fs.pathExistsSync(url)) {
+                                                        var weight = fs.statSync(url).size;
+                                                        if (weight <= base64_node_modules * 1000) {
+                                                            let datauri = new Datauri(url);
+                                                            filecontent = filecontent.split(elem).join('url(' + datauri.content + ')');
+                                                        } else {
+                                                            log.warn('WARNING! The asset ' + url + ' won\'t be base64 encoded because it exceeds the weight limit of ' + base64_node_modules + ' KB.');
+                                                            log.warn('You may want to increase this limit set in the gulp-includes/gulp-configuration.js or copy the asset relatively to the final .css file.');
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                            return {
+                                                contents : filecontent
+                                            };
+                                        } else {
+                                            return null;
+                                        }
+                                    } else {
+                                        success = false;
+                                        notifier.notify({
+                                            title : 'SASS compilation Error',
+                                            message : 'A file is missing.',
+                                            icon : './gulp-includes/core/images/fidesio-logo.png'
+                                        });
+                                        console.log(os.EOL);
+                                        log.error('ERROR! File ' + filepath + ' does not exist.');
+                                        console.log(os.EOL);
+                                        return null;
+                                    }
                                 } else {
                                     return null;
                                 }
                             } else {
-                                success = false;
-                                notifier.notify({
-                                    title : 'SASS compilation Error',
-                                    message : 'A file is missing.',
-                                    icon : './gulp-includes/core/images/fidesio-logo.png'
-                                });
-                                console.log(os.EOL);
-                                log.error('ERROR! File ' + filepath + ' does not exist.');
-                                console.log(os.EOL);
                                 return null;
                             }
                         } else {
@@ -171,7 +178,7 @@ module.exports = {
             });
             var cssContent = result.css.toString();
             var mapOptions = null;
-            if (argv.dev && output) {
+            if (argv.dev && destination) {
                 var mapContent = result.map.toString();
                 mapOptions = {
                     inline : false,
@@ -186,12 +193,12 @@ module.exports = {
                     map : mapOptions
                 });
                 cssContent = postCssResult.css;
-                if (argv.dev && output) {
+                if (argv.dev && destination) {
                     mapContent = postCssResult.map.toString();
                 }
                 try {
                     cssResult = cssContent;
-                    if (output) {
+                    if (destination) {
                         fs.outputFileSync(outFile, cssContent);
                         if (argv.dev) {
                             fs.outputFileSync(sourcemap, mapContent);

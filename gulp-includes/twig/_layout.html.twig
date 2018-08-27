@@ -6,7 +6,6 @@
  * - project_name
  * - project_short_name
  * - css_files
- * - css_url
  * - js_files
  * - html_files
  * - favicon_url
@@ -109,11 +108,11 @@
                 {% if css_file.filename == 'print' %}
                     <script>
                         /* If will add a <link rel="stylesheet"> element after page load. */
-                        /* It requires to enable the "load_print_css" option in /gulp-includes/js/my-file.js */
+                        /* It requires to enable the "load_print_css" option in gulp-includes/js/my-file.js */
                         var gulp_print_css_url = '{{ css_file.url }}?{{ random }}';
                     </script>
                 {% else %}
-                <link rel="stylesheet" href="{{ css_file.url }}?{{ random }}" type="text/css" media="not print"/>
+                    <link rel="stylesheet" href="{{ css_file.url }}?{{ random }}" type="text/css" media="not print"/>
                 {% endif %}
             {% endfor %}
         {% endblock %}
@@ -133,8 +132,8 @@
                         <img src="{{ img_url }}logo-proprete.svg" alt="Le monde de la propreté logo" />
                     </a>
                 </div>
-                {% include 'includes/big_menu.twig' %}
-                {% include 'includes/little_menu.twig' %}
+                {% include 'includes/_big_menu.twig' %}
+                {% include 'includes/_little_menu.twig' %}
                 <form method="POST" class="searchForm_header" action="#" novalidate>
                     <div class="search-input-container">
                         <input type="text" placeholder="Recherche..." autocomplete="off" required/>

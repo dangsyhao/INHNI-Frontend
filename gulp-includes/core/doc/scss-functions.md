@@ -1,7 +1,13 @@
 # SCSS custom functions, mixins, image dimensions, inline assets
 
-**Note:** Every asset (image or font) called with the url() statement from a node_modules/*.CSS stylesheet will be 
-automatically base64 encoded according to the weight limit set in the */gulp-includes/gulp-configuration.js* (in KB).
+**Note:** Every asset (image or font) called with the url() statement from a node_modules/*.css stylesheet will be 
+automatically base64 encoded according to the weight limit set in your main .scss file 
+*gulp-includes/scss/my-file.scss* (in KB).
+
+```scss
+/* If this variable is omitted or set to 0, it won't do anything at all. */
+$auto_base64_node_modules_css_weight_limit: 5;
+```
 
 #### Bourbon
 
@@ -53,7 +59,6 @@ div {
 - [Getting Started](./readme.md)
 - [Available Gulp commands](./gulp-commands.md)
 - [Use external libraries with Yarn](./external-libraries.md)
-- [SCSS custom functions, mixins, image dimensions, inline assets](./scss-functions.md)
 - [SCSS lint - How to bypass gulp check-scss warnings](./scss-lint.md)
 - [JSHint - How to bypass gulp check-js warnings](./jshint.md)
 - [Modernizr features detection](./modernizr.md)

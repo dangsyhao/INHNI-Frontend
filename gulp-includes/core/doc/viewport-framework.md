@@ -2,7 +2,7 @@
 
 ### Installation
 
-Set the enable option to `true` in */gulp-includes/js/my-file.js* :
+Set the enable option to `true` in *gulp-includes/js/my-file.js* :
 
 ```js
 plugins: {
@@ -12,7 +12,7 @@ plugins: {
 
 ### Get current viewport informations.
 
-Example in : */gulp-includes/js/includes/example.js*
+Example in : *gulp-includes/js/includes/example.js*
 
 ```js
 console.log(gulp_display);
@@ -78,7 +78,6 @@ Returns the previous horizontal scroll position of the viewport.
 - [SCSS lint - How to bypass gulp check-scss warnings](./scss-lint.md)
 - [JSHint - How to bypass gulp check-js warnings](./jshint.md)
 - [Modernizr features detection](./modernizr.md)
-- [Plugin: Built-in JavaScript viewport informations (gulp_display)](./viewport-framework.md)
 - [Plugin: Responsive/Retina/Lazyload image](./responsive-image-plugin.md)
 - [Plugin: Lazyload Iframe](./lazyload-iframe.md)
 - [Plugin: Detect New Html Elements](./detect-new-html-elements.md)
