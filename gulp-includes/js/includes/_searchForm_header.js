@@ -13,26 +13,13 @@
         var searchForm_header = $('.searchForm_header');
         if (searchForm_header.length) {
             searchForm_header.append('<span class="toggle"></span>');
-            searchForm_header.submit(function (e) {
-                var validation = false;
-                if (searchForm_header.find('input[type=text]').val().trim().length == 0) {
-                    validation = 'Merci de compléter les champs requis';
-                }
-                if (validation) {
-                    e.preventDefault();
-                    alert(validation);
-                    return false;
-                } else {
-                    return true;
-                }
-            });
             searchForm_header.find('.toggle').click(function (e) {
                 if (gulp_display.getWidth() <= 1500) {
                     e.preventDefault();
                     if ($('body').hasClass('search-open')) {
-                        console.log('a');
                         $('body').removeClass('search-open');
                     } else {
+                        closeMenuMobile();
                         $('body').addClass('search-open');
                         setTimeout(function () {
                             searchForm_header.find('input[type=text]').focus();

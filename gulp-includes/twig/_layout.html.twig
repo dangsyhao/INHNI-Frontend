@@ -134,7 +134,7 @@
                 </div>
                 {% include 'includes/_big_menu.twig' %}
                 {% include 'includes/_little_menu.twig' %}
-                <form method="POST" class="searchForm_header" action="#" novalidate>
+                <form method="POST" class="searchForm_header" action="#">
                     <div class="search-input-container">
                         <input type="text" placeholder="Recherche..." autocomplete="off" required/>
                     </div>
@@ -142,6 +142,7 @@
             </div>
         </header>
     {% endblock %}
+    {% include 'includes/_menu-mobile.twig' %}
     {% block main %}
         {% block pre_content %}{% endblock %}
         <main id="main-content">
