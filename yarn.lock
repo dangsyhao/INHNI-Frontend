@@ -3933,11 +3933,17 @@ jpegtran-bin@^3.0.0:
     bin-wrapper "^3.0.0"
     logalot "^2.0.0"
 
+jquery-numerator@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/jquery-numerator/-/jquery-numerator-0.2.1.tgz#7f633fc7a3fdf3be0db64d35cefe61c9675a4ad7"
+  dependencies:
+    jquery ">=1.9.1"
+
 jquery.resizeend@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/jquery.resizeend/-/jquery.resizeend-1.0.2.tgz#4ffbe2682116f515d6ddc7cd976967d481224e4c"
 
-jquery@^3.3.1:
+jquery@>=1.9.1, jquery@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
 

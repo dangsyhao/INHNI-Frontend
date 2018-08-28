@@ -6,9 +6,10 @@
   left: 0;
   z-index: 50;
   @media screen and (min-width: 1201px) {
-    transition: height 0.3s ease-in-out;
+    transition: height 0.15s ease-in-out;
     .sticky-header & {
-      height: 78px;
+      transition: height 0.3s ease-in-out;
+      height: 86px;
     }
   }
   @media screen and (max-width: 1200px) {
@@ -25,13 +26,18 @@
     left: 0;
     box-shadow: 0 13px 10px -10px rgba(0, 0, 0, 0.05);
   }
-  .wrapper {
+  .container {
     padding: 58px 0 26px;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 0 auto;
+    position: relative;
+    @media screen and (min-width: $desktop-medium + 1) {
+      max-width: $desktop-medium - 60;
+    }
     @media screen and (max-width: $desktop-medium) {
       padding: 58px 30px 26px;
     }
@@ -39,9 +45,10 @@
       padding: 10px 15px;
     }
     @media screen and (min-width: 1201px) {
-      transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
+      transition: padding-top 0.15s ease-in-out, padding-bottom 0.15s ease-in-out;
       .sticky-header & {
         padding: 15px 0;
+        transition: padding-top 0.3s ease-in-out, padding-bottom 0.3s ease-in-out;
         @media screen and (max-width: $desktop-medium) {
           padding: 15px 30px;
         }

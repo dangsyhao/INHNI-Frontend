@@ -121,7 +121,7 @@
 <body class="{% block bodyclass %}{% endblock %}">
     {% block header %}
         <header id="header">
-            <div class="wrapper">
+            <div class="container">
                 <div class="logos">
                     {% block logo %}
                         <a href="./home.html" title="Revenir à l'accueil" class="logo">
@@ -136,7 +136,7 @@
                 {% include 'includes/_little_menu.twig' %}
                 <form method="POST" class="searchForm_header" action="#">
                     <div class="search-input-container">
-                        <input type="text" placeholder="Recherche..." autocomplete="off" required/>
+                        <input type="text" placeholder="Recherche..." />
                     </div>
                 </form>
             </div>
@@ -146,9 +146,7 @@
     {% block main %}
         {% block pre_content %}{% endblock %}
         <main id="main-content">
-            <div class="wrapper clearfix">
-                {% block content %}{% endblock %}
-            </div>
+            {% block content %}{% endblock %}
         </main>
         {% block post_content %}{% endblock %}
     {% endblock %}

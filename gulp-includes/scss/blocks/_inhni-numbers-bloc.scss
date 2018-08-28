@@ -1,0 +1,101 @@
+.inhni-numbers-bloc {
+  padding: 50px 0;
+  background: linear-gradient(228.05deg, $maincolor-1 0%, $maincolor-1-gradient-combination 100%);
+  color: #fff;
+  text-align: center;
+  .desc {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 28px;
+    color: $maincolor-2;
+    margin-top: 2.5px;
+    letter-spacing: 0.22px;
+  }
+  .numbers {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    overflow: hidden;
+  }
+  .digit {
+    font-family: $font-2;
+    color: $maincolor-2;
+    margin-bottom: 40px;
+    white-space: nowrap;
+    font-size: 0;
+    letter-spacing: 0;
+    .value,
+    .percent {
+      letter-spacing: 0.5px;
+    }
+    .value {
+      font-size: 50px;
+    }
+    .percent {
+      font-size: 40px;
+    }
+  }
+  .label {
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.2px;
+    line-height: 19px;
+    text-transform: uppercase;
+    max-width: 100%;
+  }
+  .digit,
+  .label {
+    display: block;
+  }
+  .number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 213px;
+    width: calc((100% - 213px - 4 * 30px) / 4);
+    margin-right: 30px;
+    &:last-of-type {
+      margin-right: 0;
+    }
+    &:not(.circle) {
+      padding: 56px 10px 0;
+      justify-content: flex-start;
+    }
+    &.circle {
+      flex-shrink: 0;
+      flex-grow: 0;
+      position: relative;
+      width: 213px;
+      height: 213px;
+      border: 11px solid rgba(0, 157, 221, 0.3);
+      border-radius: 50%;
+      .label,
+      .digit {
+        position: relative;
+        z-index: 2;
+      }
+      .digit {
+        .value,
+        .percent {
+          letter-spacing: inherit;
+        }
+        .value {
+          font-size: 80px;
+        }
+        margin-bottom: 20px;
+      }
+      canvas {
+        position: absolute;
+        z-index: 1;
+        width: calc(100% + 22px);
+        height: calc(100% + 22px);
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+  }
+}

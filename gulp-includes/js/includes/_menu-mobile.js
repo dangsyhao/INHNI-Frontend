@@ -10,7 +10,7 @@
     'use strict';
 
     $(document).ready(function () {
-        var container = $('#header .wrapper');
+        var container = $('#header .container');
         if (container.length) {
             container.prepend('<div class="menu-toggle"><span></span><span></span><span></span><span></span></div>');
             var menu_mobile = $('#menu_mobile');

@@ -57,6 +57,7 @@ p {
   font-weight: 400;
   font-style: normal;
   text-decoration: none;
+  user-select: none;
 }
 
 /*
@@ -65,3 +66,57 @@ p {
   content: '\E801';
 }
 */
+
+//============================================================
+// BigMenuColor
+//============================================================
+
+@mixin bigMenuColor($color) {
+  & > a {
+    span {
+      &:before {
+        background: $color;
+      }
+    }
+  }
+  &:hover,
+  &:active {
+    & > a {
+      color: $color;
+      &:after {
+        color: $color;
+      }
+    }
+  }
+  &.current {
+    & > a {
+      color: $color;
+      &:after {
+        color: $color;
+      }
+    }
+  }
+  .sub_menu {
+    .menu-featured {
+      background-color: $color;
+      &:before {
+        color: rgba(darken($color, 33%), 0.3);
+      }
+    }
+    ul {
+      li {
+        a {
+          &:hover,
+          &:active {
+            color: $color;
+          }
+        }
+        &.current {
+          a {
+            color: $color;
+          }
+        }
+      }
+    }
+  }
+}

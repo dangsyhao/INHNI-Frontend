@@ -16,10 +16,8 @@
       z-index: -1;
       padding: 15px 0;
       height: auto;
-      animation: littleMenuSticky;
-      animation-duration: 0.3s;
-      animation-fill-mode: forwards;
-      animation-delay: 0.5s;
+      top: 100%;
+      transition: top 0.3s ease-in-out;
     }
   }
   @media screen and (max-width: 1200px) {
@@ -72,23 +70,5 @@
         font-weight: 700;
       }
     }
-  }
-}
-
-@keyframes littleMenuSticky {
-  0% {
-    top: 16px;
-  }
-  100% {
-    top: 100%;
-  }
-}
-
-@keyframes littleMenuNoMoreSticky {
-  0% {
-    top: 100%;
-  }
-  100% {
-    top: 16px;
   }
 }

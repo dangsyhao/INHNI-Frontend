@@ -1,0 +1,31 @@
+.title-1 {
+  font-family: $font-4;
+  font-size: 38px;
+  font-weight: bold;
+  letter-spacing: -0.05px;
+  line-height: 35px;
+  @media screen and (max-width: $tablet-medium) {
+    font-size: 36px;
+    line-height: 33px;
+  }
+  @media screen and (max-width: $tablet-small) {
+    font-size: 32px;
+    line-height: 29px;
+  }
+}
+
+.title-2 {
+  font-family: $font-1;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.03px;
+  line-height: 27px;
+  @media screen and (max-width: $tablet-medium) {
+    font-size: 21px;
+    line-height: 26px;
+  }
+  @media screen and (max-width: $tablet-small) {
+    font-size: 20px;
+    line-height: 25px;
+  }
+}

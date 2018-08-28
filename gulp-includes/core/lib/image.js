@@ -59,7 +59,8 @@ module.exports = {
                 plugins : [{
                     removeViewBox : false
                 }, {
-                    removeUselessStrokeAndFill : false
+                    removeUselessStrokeAndFill : false,
+                    removeViewBox: false
                 }]
             }));
         }

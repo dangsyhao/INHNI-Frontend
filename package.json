@@ -1,6 +1,6 @@
 {
   "name": "frontend-boilerplate",
-  "version": "1.0.46",
+  "version": "1.0.47",
   "description": "Minimalist and ready to use frontEnd HTML5/CSS/JS Boilerplate for creating new web projects with Gulp.js.",
   "private": true,
   "author": {
@@ -79,5 +79,7 @@
     "upath": "^1.1.0",
     "verge": "^1.10.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "jquery-numerator": "^0.2.1"
+  }
 }

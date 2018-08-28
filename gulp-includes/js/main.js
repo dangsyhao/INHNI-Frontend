@@ -10,9 +10,10 @@ const config = {
     /* Most likely node_modules or includes stuffs */
     src : [
         // 'node_modules/slick-carousel/slick/slick.js',
-        // 'node_modules/magnific-popup/dist/jquery.magnific-popup.js',
-        'gulp-includes/js/includes/**/*.js',
-        'gulp-includes/js/helpers/_detect-ie.js'
+        'node_modules/jquery-numerator/jquery-numerator.js',
+        'node_modules/intersection-observer/intersection-observer.js',
+        'gulp-includes/js/helpers/_detect-ie.js',
+        'gulp-includes/js/includes/**/*.js'
     ],
 
     plugins : {
@@ -47,7 +48,7 @@ const config = {
         /* - Polyfill: https://www.npmjs.com/package/intersection-observer */
         /* - Modernizr tests (test/dom/mutationObserver, test/customevent, test/img/srcset) */
         /* - gulp-includes/core/plugins/responsive-image/responsive-image.js */
-        responsiveImage : false,
+        responsiveImage : true,
 
         /* Refer to documentation, Plugin: Detect New Html Elements */
         /* If this option is enabled, the following dependencies will be included in the bundle : */

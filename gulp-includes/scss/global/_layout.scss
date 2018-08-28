@@ -5,10 +5,10 @@
 .wrapper {
   margin: 0 auto;
   position: relative;
-  @media screen and (min-width: $desktop-medium + 1) {
-    max-width: $desktop-medium - 60;
+  @media screen and (min-width: 1203px) {
+    max-width: 1142px;
   }
-  @media screen and (max-width: $desktop-medium) {
+  @media screen and (max-width: 1202px) {
     padding: 0 30px;
   }
   @media screen and (max-width: $tablet-medium) {
