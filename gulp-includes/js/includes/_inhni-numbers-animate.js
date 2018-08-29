@@ -12,7 +12,7 @@
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
     $(document).ready(function () {
-        var container = $('.inhni-numbers-bloc');
+        var container = $('.inhni-numbers-bloc .numbers');
         if (container.length) {
             var lazyObserver = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
@@ -23,7 +23,7 @@
                     }
                 });
             }, {
-                rootMargin : '0px 0px 256px 0px' //https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/#mind_the_fold
+                rootMargin : '0px 0px 0px 0px' //https://developers.google.com/web/fundamentals/performance/lazy-loading-guidance/images-and-video/#mind_the_fold
             });
             lazyObserver.observe(container.get(0));
         }

@@ -29,6 +29,12 @@
                     $(this).parents('form').first().submit();
                 }
             });
+            $(document).keyup(function (e) {
+                if (e.which == 27 && $('body').hasClass('search-open')) {
+                    e.preventDefault();
+                    $('body').removeClass('search-open');
+                }
+            });
         }
     });
 

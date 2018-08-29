@@ -24,7 +24,7 @@
     display: block;
     top: 0;
     left: 0;
-    box-shadow: 0 13px 10px -10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 13px 10px -10px rgba(0, 0, 0, 0.15);
   }
   .container {
     padding: 58px 0 26px;
@@ -66,6 +66,7 @@
     width: 30px;
     height: 26px;
     opacity: 0.8;
+    transform: scale(0.8);
     span {
       display: block;
       position: absolute;

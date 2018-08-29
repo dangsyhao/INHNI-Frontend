@@ -44,6 +44,19 @@
                     $('body').addClass('menu-open');
                 }
             });
+            $(document).keyup(function (e) {
+                if (e.which == 27 && $('body').hasClass('menu-open')) {
+                    e.preventDefault();
+                    var menu_mobile = $('#menu_mobile');
+                    if (menu_mobile.length) {
+                        if (menu_mobile.find('li.open').length) {
+                            menu_mobile.find('li.open').removeClass('open');
+                        } else {
+                            closeMenuMobile();
+                        }
+                    }
+                }
+            });
         }
     });
 

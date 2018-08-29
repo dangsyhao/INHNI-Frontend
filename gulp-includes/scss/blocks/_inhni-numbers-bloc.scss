@@ -18,14 +18,22 @@
     justify-content: space-between;
     margin-top: 30px;
     overflow: hidden;
+    @media screen and (max-width: $desktop-small) {
+      flex-direction: column;
+    }
+    @media screen and (max-width: $tablet-small) {
+      align-items: flex-start;
+    }
   }
   .digit {
     font-family: $font-2;
     color: $maincolor-2;
-    margin-bottom: 40px;
     white-space: nowrap;
     font-size: 0;
     letter-spacing: 0;
+    @media screen and (min-width: $desktop-small + 1) {
+      margin-bottom: 40px;
+    }
     .value,
     .percent {
       letter-spacing: 0.5px;
@@ -54,15 +62,51 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 213px;
-    width: calc((100% - 213px - 4 * 30px) / 4);
-    margin-right: 30px;
-    &:last-of-type {
-      margin-right: 0;
+    @media screen and (min-width: $desktop-small + 1) {
+      height: 213px;
+      width: calc((100% - 213px - 4 * 30px) / 4);
+      margin-right: 30px;
+      &:last-of-type {
+        margin-right: 0;
+      }
     }
     &:not(.circle) {
-      padding: 56px 10px 0;
-      justify-content: flex-start;
+      @media screen and (min-width: $desktop-small + 1) {
+        padding: 56px 10px 0;
+        justify-content: flex-start;
+      }
+      @media screen and (max-width: $desktop-small) {
+        order: 2;
+        flex-direction: row;
+        justify-content: center;
+      }
+      @media screen and (max-width: $tablet-medium) {
+        margin-bottom: 5px;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+      @media screen and (max-width: $tablet-small) {
+        margin-bottom: 15px;
+      }
+      .digit {
+        @media screen and (max-width: $desktop-small) {
+          margin-right: 10px;
+        }
+        .value {
+          @media screen and (max-width: $tablet-medium) {
+            font-size: 40px;
+          }
+          @media screen and (max-width: $tablet-small) {
+            font-size: 35px;
+          }
+        }
+      }
+      .label {
+        @media screen and (max-width: $tablet-small) {
+          text-align: left;
+        }
+      }
     }
     &.circle {
       flex-shrink: 0;
@@ -72,12 +116,25 @@
       height: 213px;
       border: 11px solid rgba(0, 157, 221, 0.3);
       border-radius: 50%;
+      @media screen and (max-width: $desktop-small) {
+        order: 1;
+        margin-bottom: 15px;
+        width: 180px;
+        height: 180px;
+      }
+      @media screen and (max-width: $tablet-small) {
+        margin-bottom: 30px;
+        align-self: center;
+      }
       .label,
       .digit {
         position: relative;
         z-index: 2;
       }
       .digit {
+        @media screen and (min-width: $desktop-small + 1) {
+          margin-bottom: 20px;
+        }
         .value,
         .percent {
           letter-spacing: inherit;
@@ -85,7 +142,6 @@
         .value {
           font-size: 80px;
         }
-        margin-bottom: 20px;
       }
       canvas {
         position: absolute;
