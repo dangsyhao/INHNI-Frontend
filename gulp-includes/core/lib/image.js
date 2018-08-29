@@ -57,10 +57,9 @@ module.exports = {
         if (extension == '.svg') {
             imageminArray.push(imageminSvgo({
                 plugins : [{
-                    removeViewBox : false
+                    removeUselessStrokeAndFill : false
                 }, {
-                    removeUselessStrokeAndFill : false,
-                    removeViewBox: false
+                    removeViewBox : false
                 }]
             }));
         }
