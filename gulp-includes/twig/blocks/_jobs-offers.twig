@@ -3,6 +3,27 @@
         <h3 class="title-1 blue-polygon">
             <span>Offres en alternance disponibles</span>
         </h3>
+        <div class="jobs">
+            {% for i in 1..4 %}
+                <a class="job" href="#" title="Consulter l'offre d'emploi">
+                    <h4 class="title-4">Agent de petite maintenance H/F</h4>
+                    <ul class="details">
+                        <li class="school">Bac pro</li>
+                        <li class="location">Strasbourg</li>
+                        <li class="money">720€ par mois</li>
+                    </ul>
+                    <p>
+                        Permis B indispensable, vous aimez le travail en équipe et êtes attaché(e) à atteindre vos
+                        objectifs. Vous souhaitez vous investir à long terme dans une société dynamique...
+                    </p>
+                    <span class="link-arrow">
+                        <span class="link">
+                            <span>Voir l'annonce</span>
+                        </span>
+                    </span>
+                </a>
+            {% endfor %}
+        </div>
         <a class="btn" href="#" title="Voir toutes les offres d'emploi">
             <span>Toutes les offres d'emploi</span>
         </a>

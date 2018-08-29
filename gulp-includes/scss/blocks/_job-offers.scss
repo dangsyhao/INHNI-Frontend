@@ -1,4 +1,63 @@
 .job-offers-bloc {
   @include blocPadding;
-
+  color: #fff;
+  .wrapper {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .title-1 {
+    margin-bottom: 43px;
+  }
+  .btn {
+    align-self: center;
+  }
+  .jobs {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.22px;
+    line-height: 16px;
+    margin-bottom: 47.5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .job {
+    display: block;
+    border-radius: 2px;
+    background: linear-gradient(270deg, $maincolor-2 0%, $maincolor-2-gradient-combination 97.08%);
+    margin-right: 28px;
+    width: calc((100% - 3 * 28px) / 4);
+    padding: 16px 20px 18px;
+    &:last-of-type {
+      margin-right: 0;
+    }
+    .title-4 {
+      height: 42px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .details {
+      line-height: 25px;
+      height: 75px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      li {
+        @include text-ellipsis;
+      }
+    }
+    p {
+      height: 32px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .link-arrow {
+      color: #fff;
+      &:before {
+        background: rgba(216, 240, 250, 0.51);
+      }
+    }
+  }
 }

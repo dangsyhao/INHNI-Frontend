@@ -15,6 +15,7 @@
   &.blue-polygon {
     position: relative;
     padding-left: 40px;
+    color: $textcolor-1;
     span {
       position: relative;
       z-index: 2;
@@ -63,5 +64,21 @@
   @media screen and (max-width: $tablet-small) {
     font-size: 28px;
     line-height: 33px;
+  }
+}
+
+.title-4 {
+  font-family: $font-1;
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 0.26px;
+  line-height: 21px;
+  @media screen and (max-width: $tablet-medium) {
+    font-size: 17px;
+    line-height: 21px;
+  }
+  @media screen and (max-width: $tablet-small) {
+    font-size: 16px;
+    line-height: 20px;
   }
 }
