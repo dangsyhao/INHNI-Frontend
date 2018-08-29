@@ -1,0 +1,61 @@
+.link-arrow {
+  display: block;
+  position: relative;
+  line-height: 16px;
+  height: 16px;
+  color: $maincolor-2;
+  font-family: $font-2;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.16px;
+  padding-left: calc(35.04% + 18.5px);
+  width: 100%;
+  text-align: left;
+  cursor: default;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(50% + 1px);
+    left: 0;
+    transform: translateY(-50%);
+    height: 2px;
+    width: 35.04%;
+    background: rgba($maincolor-2, 0.3);
+  }
+  a {
+    display: inline-block;
+    vertical-align: top;
+    transition: padding-left 0.3s ease-in-out;
+    span {
+      position: relative;
+      z-index: 2;
+    }
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: calc(50% + 1px);
+      left: 35%;
+      transform: translateY(-50%);
+      height: 2px;
+      width: 0;
+      background: rgba($maincolor-2, 0.3);
+      z-index: 1;
+      transition: width 0.3s ease-in-out;
+    }
+    &:after {
+      content: '\E803';
+      @include fontello;
+      font-size: 11px;
+      margin-left: 18.5px;
+    }
+    &:hover,
+    &:active {
+      padding-left: 30px;
+      &:before {
+        width: 30px;
+      }
+    }
+  }
+}

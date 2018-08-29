@@ -1,5 +1,5 @@
 .inhni-numbers-bloc {
-  padding: 50px 0;
+  @include blocPadding;
   background: linear-gradient(228.05deg, $maincolor-1 0%, $maincolor-1-gradient-combination 100%);
   color: #fff;
   text-align: center;
@@ -17,7 +17,6 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 30px;
-    overflow: hidden;
     @media screen and (max-width: $desktop-small) {
       flex-direction: column;
     }

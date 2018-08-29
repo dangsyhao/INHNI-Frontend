@@ -1,0 +1,19 @@
+.featured-news-bloc {
+  @include blocPadding;
+  background: #F7F8FA;
+  .wrapper {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .title-1 {
+    margin-bottom: 43px;
+  }
+  .article {
+    margin-bottom: 47.5px;
+  }
+  .btn {
+    align-self: center;
+  }
+}

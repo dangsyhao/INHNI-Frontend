@@ -120,3 +120,20 @@ p {
     }
   }
 }
+
+//============================================================
+// blocPadding
+//============================================================
+
+@mixin blocPadding {
+  padding: 55px 0;
+  @media screen and (max-width: $desktop-small) {
+    padding: 50px 0;
+  }
+  @media screen and (max-width: $tablet-medium) {
+    padding: 45px 0;
+  }
+  @media screen and (max-width: $tablet-small) {
+    padding: 40px 0;
+  }
+}

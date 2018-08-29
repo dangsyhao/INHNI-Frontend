@@ -17,7 +17,6 @@
             var lazyObserver = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
-                        var elem = $(entry.target);
                         lazyObserver.unobserve(entry.target);
                         initNumbersAndCanvas();
                     }
