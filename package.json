@@ -1,6 +1,6 @@
 {
   "name": "frontend-boilerplate",
-  "version": "1.0.47",
+  "version": "1.0.48",
   "description": "Minimalist and ready to use frontEnd HTML5/CSS/JS Boilerplate for creating new web projects with Gulp.js.",
   "private": true,
   "author": {
