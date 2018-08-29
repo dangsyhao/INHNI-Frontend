@@ -50,7 +50,7 @@ const config = {
 
     /* Various external links related to the project */
     project_other_links: {
-        // 'staging': 'http://client.project.staging.fides.io/',
+        'staging': 'http://inhni.gie.staging.fides.io/'
         // 'preprod': 'https://preprod.project.com/',
         // 'production': 'https://project.com/',
         // 'other custom link': 'http://other-link.com/'
