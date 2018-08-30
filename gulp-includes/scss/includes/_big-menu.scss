@@ -75,7 +75,8 @@
             bottom: 7px;
             height: 4px;
             width: 0;
-            transition: width 0.3s ease-in-out;
+            opacity: 0;
+            transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
             .sticky-header & {
               bottom: 3px;
             }
@@ -97,6 +98,7 @@
           span {
             &:before {
               width: 30px;
+              opacity: 1;
             }
           }
         }
