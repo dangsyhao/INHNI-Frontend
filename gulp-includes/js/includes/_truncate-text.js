@@ -11,19 +11,27 @@
 
     $(document).ready(function () {
         truncateText();
+        setInterval(function () {
+            truncateText();
+        }, 5000);
     });
 
-    $(window).on('resizeend', function () {
+    $(window).on('load resizeend', function () {
         truncateText();
     });
 
     function truncateText() {
 
-        $('.job .title-4, .job p, .zoom p').truncate({
+        /* ----------------- .job / .zoom blocs ----------------- */
+        var selector = $('.job .title-4, .job p, .zoom p');
+        selector.truncate({
             lines : 2
         });
+        selector.truncate('collapse');
+        /* ------------------------------------------------------------------------------ */
 
-        var selector = $('.article.big p');
+        /* ----------------- .article.big ----------------- */
+        selector = $('.article.big p');
         if (gulp_display.getWidth() <= 1200) {
             if (selector.hasClass('truncated')) {
                 selector.removeClass('truncated').truncate('expand');
@@ -32,7 +40,9 @@
             selector.addClass('truncated').truncate({
                 lines : 4
             });
+            selector.truncate('collapse');
         }
+        /* ------------------------------------------------------------------------------ */
 
     }
 

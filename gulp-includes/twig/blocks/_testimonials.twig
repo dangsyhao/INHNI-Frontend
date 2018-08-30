@@ -1,0 +1,12 @@
+<section class="testimonials-bloc">
+    <div class="decoration"></div>
+    <div class="content">
+        <div class="wrapper">
+            <div class="testimonials">
+                {% for i in 1..3 %}
+                    {% include '../includes/_testimonial.twig' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

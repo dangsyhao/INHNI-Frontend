@@ -38,6 +38,7 @@
                 slider.filter('.slick-initialized').slick('unslick');
             }
         }
+        /* ------------------------------------------------------------------------------ */
 
         /* ----------------- Slider || Bloc jobs zoom (tablet + mobile) ----------------- */
         slider = $('.jobs-zoom-bloc .zooms');
@@ -58,6 +59,7 @@
                 slider.filter('.slick-initialized').slick('unslick');
             }
         }
+        /* ------------------------------------------------------------------------------ */
 
     }
 
