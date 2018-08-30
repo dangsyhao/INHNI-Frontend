@@ -122,16 +122,7 @@
     {% block header %}
         <header id="header">
             <div class="container">
-                <div class="logos">
-                    {% block logo %}
-                        <a href="./home.html" title="Revenir à l'accueil" class="logo">
-                            <img src="{{ img_url }}logo.svg" alt="INHNI Consultants et Formateurs logo" />
-                        </a>
-                    {% endblock %}
-                    <a href="https://www.monde-proprete.com/" title="Accéder au site du monde de la propreté" target="_blank" class="proprete">
-                        <img src="{{ img_url }}logo-proprete.svg" alt="Le monde de la propreté logo" />
-                    </a>
-                </div>
+                {% include 'includes/_logos.twig' %}
                 {% include 'includes/_big_menu.twig' %}
                 {% include 'includes/_little_menu.twig' %}
                 <form method="POST" class="searchForm_header" action="#">

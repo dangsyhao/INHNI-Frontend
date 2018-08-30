@@ -1,3 +1,126 @@
 .testimonials-bloc {
-
+  .decoration {
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .logos,
+  .lazy_responsive_image {
+    height: 100%;
+    width: 50%;
+    @media screen and (max-width: 1200px) {
+      width: 100%;
+    }
+  }
+  .logos {
+    justify-content: center;
+    border-top: 1px solid rgba(66, 70, 77, 0.2);
+    border-bottom: 1px solid rgba(66, 70, 77, 0.2);
+    @media screen and (max-width: $tablet-small) {
+      flex-direction: column;
+    }
+    &:before {
+      left: calc(50% - 9px);
+      height: 71px;
+      @media screen and (max-width: $tablet-small) {
+        left: 50%;
+        width: 95px;
+        height: 1px;
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+    a {
+      &.logo {
+        @media screen and (max-width: $tablet-small) {
+          margin: 21px 0 32.5px;
+        }
+        img {
+          width: 149.8px;
+        }
+      }
+      &.proprete {
+        img {
+          width: 174.57px;
+        }
+      }
+    }
+  }
+  .lazy_responsive_image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    @media screen and (max-width: 1200px) {
+      display: none;
+    }
+  }
+  .content {
+    background: #F7F8FA;
+    padding: 40px 0 24px;
+  }
+  .slick-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .slick-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 46px;
+    li {
+      height: 6px;
+      width: 6px;
+      border-radius: 50%;
+      user-select: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+      background: $textcolor-3;
+      margin-right: 8.25px;
+      &:last-of-type {
+        margin-right: 0;
+      }
+      &.slick-active {
+        background: $maincolor-1;
+      }
+      button {
+        display: none;
+      }
+    }
+  }
+  .slick-track {
+    display: flex;
+  }
+  .slick-arrow {
+    height: 29px;
+    width: 15px;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:before {
+      content: '\E809';
+      @include fontello;
+      font-size: 28px;
+    }
+  }
+  .slick-prev {
+    left: 0;
+  }
+  .slick-next {
+    right: 0;
+    &:before {
+      transform: rotateY(180deg);
+    }
+  }
 }

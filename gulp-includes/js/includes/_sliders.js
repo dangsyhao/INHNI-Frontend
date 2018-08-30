@@ -18,7 +18,7 @@
     });
 
     function createSlick() {
-
+        /* ########################################################################################### */
         /* ----------------- Slider || Bloc jobs offers (tablet + mobile) ----------------- */
         var slider = $('.jobs-offers-bloc .jobs');
         var slide = $('.jobs-offers-bloc .jobs .job');
@@ -38,9 +38,9 @@
                 slider.filter('.slick-initialized').slick('unslick');
             }
         }
-        /* ------------------------------------------------------------------------------ */
-
+        /* ########################################################################################### */
         /* ----------------- Slider || Bloc jobs zoom (tablet + mobile) ----------------- */
+        /* ########################################################################################### */
         slider = $('.jobs-zoom-bloc .zooms');
         slide = $('.jobs-zoom-bloc .zooms .zoom');
         if (slide.length > 1) {
@@ -59,8 +59,29 @@
                 slider.filter('.slick-initialized').slick('unslick');
             }
         }
-        /* ------------------------------------------------------------------------------ */
+        /* ########################################################################################### */
+        /* ----------------- Slider || Bloc testimonials (desktop + tablet + mobile) ----------------- */
+        /* ########################################################################################### */
+        slider = $('.testimonials-bloc .testimonials');
+        slide = $('.testimonials-bloc .testimonials .testimonial');
+        if (slide.length > 1) {
+            slider.not('.slick-initialized').slick(
+                {
+                    cssEase : 'ease-in-out',
+                    slidesToShow: 1,
+                    dots: true,
+                    fade: true,
+                    centerPadding: '0px',
+                    variableWidth : false,
+                    swipeToSlide : true,
+                    centerMode : true,
+                    prevArrow : '<button class="slick-prev slick-arrow"></button>',
+                    nextArrow : '<button class="slick-next slick-arrow"></button>'
+                }
+            );
 
+        }
+        /* ########################################################################################### */
     }
 
 })(jQuery);
