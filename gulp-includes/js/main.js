@@ -9,9 +9,10 @@ const config = {
     /* Path to external libs (e.g. sliders, modals ...). */
     /* Most likely node_modules or includes stuffs */
     src : [
-        // 'node_modules/slick-carousel/slick/slick.js',
+        'node_modules/slick-carousel/slick/slick.js',
         'node_modules/jquery-numerator/jquery-numerator.js',
         'node_modules/intersection-observer/intersection-observer.js',
+        'node_modules/truncate.js/dist/truncate.min.js',
         'gulp-includes/js/helpers/_detect-ie.js',
         'gulp-includes/js/includes/**/*.js'
     ],
@@ -32,7 +33,7 @@ const config = {
         /* If will add a <link rel="stylesheet"> element after page load if gulp_print_css_url is defined. */
         /* - jQuery, unless you set the jQuery option above to false */
         /* - gulp-includes/core/plugins/load-print-css/load-print-css.js */
-        load_print_css: true,
+        load_print_css : true,
 
         /* Refer to documentation, Plugin: Built-in JavaScript viewport informations (gulp_display) */
         /* If this option is enabled, the following dependencies will be included in the bundle : */

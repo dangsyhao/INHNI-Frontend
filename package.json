@@ -80,6 +80,8 @@
     "verge": "^1.10.2"
   },
   "dependencies": {
-    "jquery-numerator": "^0.2.1"
+    "jquery-numerator": "^0.2.1",
+    "slick-carousel": "^1.8.1",
+    "truncate.js": "^1.1.2"
   }
 }

@@ -3,58 +3,116 @@
   position: relative;
   line-height: 16px;
   height: 16px;
-  color: $maincolor-2;
   font-family: $font-2;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.16px;
-  padding-left: calc(35.04% + 18.5px);
   width: 100%;
   text-align: left;
-  cursor: default;
-  &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: calc(50% + 1px);
-    left: 0;
-    transform: translateY(-50%);
-    height: 2px;
-    width: 35.04%;
-    background: rgba($maincolor-2, 0.3);
-  }
   .link {
     display: inline-block;
     vertical-align: top;
-    transition: padding-left 0.3s ease-in-out;
-    span {
-      position: relative;
-      z-index: 2;
-    }
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      top: calc(50% + 1px);
-      left: 35%;
-      transform: translateY(-50%);
-      height: 2px;
-      width: 0;
-      background: rgba($maincolor-2, 0.3);
-      z-index: 1;
-      transition: width 0.3s ease-in-out;
-    }
     &:after {
       content: '\E803';
       @include fontello;
       font-size: 11px;
       margin-left: 18.5px;
     }
+  }
+  &-align-right {
+    text-align: right;
+    overflow: hidden;
+    transition: padding-right 0.3s ease-in-out;
+    .link {
+      position: relative;
+      &:before {
+        content: '';
+        height: 2px;
+        display: block;
+        position: absolute;
+        top: calc(50% + 1px);
+        right: calc(100% + 18.5px);
+        transform: translateY(-50%);
+        width: 10000px;
+      }
+    }
     &:hover,
     &:active {
-      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+  &:not(.link-arrow-align-right) {
+    padding-left: calc(35.04% + 18.5px);
+    &:before {
+      width: 35.04%;
+      content: '';
+      display: block;
+      position: absolute;
+      top: calc(50% + 1px);
+      left: 0;
+      transform: translateY(-50%);
+      height: 2px;
+    }
+    .link {
+      transition: padding-left 0.3s ease-in-out;
       &:before {
-        width: 30px;
+        content: '';
+        display: block;
+        position: absolute;
+        top: calc(50% + 1px);
+        left: 35%;
+        transform: translateY(-50%);
+        height: 2px;
+        width: 0;
+        z-index: 1;
+        transition: width 0.3s ease-in-out;
+      }
+      &:hover,
+      &:active {
+        padding-left: 30px;
+        &:before {
+          width: 30px;
+        }
+      }
+    }
+  }
+  &-white {
+    color: #fff;
+    &.link-arrow-align-right {
+      .link {
+        &:before {
+          background: rgba(216, 240, 250, 0.51);
+        }
+      }
+    }
+    &:not(.link-arrow-align-right) {
+      &:before {
+        background: rgba(216, 240, 250, 0.51);
+      }
+      .link {
+        &:before {
+          background: rgba(216, 240, 250, 0.51);
+        }
+      }
+    }
+  }
+  &-blue {
+    color: $maincolor-2;
+    &.link-arrow-align-right {
+      .link {
+        &:before {
+          background: rgba($maincolor-2, 0.3);
+        }
+      }
+    }
+    &:not(.link-arrow-align-right) {
+      &:before {
+        background: rgba($maincolor-2, 0.3);
+      }
+      .link {
+        &:before {
+          background: rgba($maincolor-2, 0.3);
+        }
       }
     }
   }

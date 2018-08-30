@@ -20,43 +20,119 @@
     line-height: 16px;
     margin-bottom: 47.5px;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @media screen and (min-width: 1201px) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @media screen and (max-width: 1200px) {
+      padding-top: 70px;
+    }
+  }
+  slick-list {
+    margin: 0 -15px;
+    z-index: 1;
+  }
+  .slick-slide {
+    margin: 0px 15px;
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .slick-arrow {
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    top: 0;
+    z-index: 2;
+    border-radius: 50%;
+    border: 1px solid rgba($maincolor-2, 0.75);
+    transition: transform 0.15s ease-in-out;
+    &:active {
+      transform: scale(0.935);
+    }
+    &:before {
+      content: '\E803';
+      @include fontello;
+      color: $maincolor-2;
+      display: block;
+    }
+    &.slick-next {
+      left: 65px;
+    }
+    &.slick-prev {
+      left: 0;
+      &:before {
+        transform: rotateY(180deg);
+      }
+    }
   }
   .job {
-    display: block;
+    display: block !important;
     border-radius: 2px;
     background: linear-gradient(270deg, $maincolor-2 0%, $maincolor-2-gradient-combination 97.08%);
-    margin-right: 28px;
-    width: calc((100% - 3 * 28px) / 4);
     padding: 16px 20px 18px;
-    &:last-of-type {
-      margin-right: 0;
+    @media screen and (min-width: 1201px) {
+      margin-right: 28px;
+      width: calc((100% - 3 * 28px) / 4);
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    @media screen and (max-width: 1200px) {
+      width: 290px !important;
     }
     .title-4 {
       height: 42px;
       overflow: hidden;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
     .details {
-      line-height: 25px;
-      height: 75px;
+      line-height: 20px;
+      height: 60px;
       overflow: hidden;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
       li {
         @include text-ellipsis;
+        &:before {
+          margin-right: 10px;
+          @include fontello;
+        }
+        &.school {
+          &:before {
+            content: '\E806';
+          }
+        }
+        &.location {
+          &:before {
+            content: '\E805';
+          }
+        }
+        &.money {
+          &:before {
+            content: '\E807';
+            font-size: 10px;
+          }
+        }
       }
     }
     p {
       height: 32px;
       overflow: hidden;
-      margin-bottom: 12px;
     }
-    .link-arrow {
-      color: #fff;
-      &:before {
-        background: rgba(216, 240, 250, 0.51);
+    .link-arrow-align-right {
+      margin-top: 20px;
+      height: 16px;
+      overflow: hidden;
+    }
+    &:hover,
+    &:active {
+      .link-arrow-align-right {
+        padding-right: 30px;
       }
     }
   }
