@@ -1,0 +1,59 @@
+.job {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22px;
+  line-height: 16px;
+  border-radius: 2px;
+  background: linear-gradient(270deg, $maincolor-2 0%, $maincolor-2-gradient-combination 97.08%);
+  padding: 16px 20px 18px;
+  .title-4 {
+    height: 42px;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+  .details {
+    line-height: 20px;
+    height: 60px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    li {
+      @include text-ellipsis;
+      &:before {
+        margin-right: 10px;
+        @include fontello;
+      }
+      &.school {
+        &:before {
+          content: '\E806';
+        }
+      }
+      &.location {
+        &:before {
+          content: '\E805';
+        }
+      }
+      &.money {
+        &:before {
+          content: '\E807';
+          font-size: 10px;
+        }
+      }
+    }
+  }
+  p {
+    height: 32px;
+    overflow: hidden;
+  }
+  .link-arrow-align-right {
+    margin-top: 20px;
+    height: 16px;
+    overflow: hidden;
+  }
+  &:hover,
+  &:active {
+    .link-arrow-align-right {
+      padding-right: 30px;
+    }
+  }
+
+}

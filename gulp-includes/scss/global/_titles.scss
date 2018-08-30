@@ -74,6 +74,22 @@
   letter-spacing: 0.26px;
   line-height: 21px;
   @media screen and (max-width: $tablet-medium) {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  @media screen and (max-width: $tablet-small) {
+    font-size: 15px;
+    line-height: 19px;
+  }
+}
+
+.title-5 {
+  font-family: $font-1;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.27px;
+  line-height: 22px;
+  @media screen and (max-width: $tablet-medium) {
     font-size: 17px;
     line-height: 21px;
   }

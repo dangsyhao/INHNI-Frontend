@@ -19,10 +19,8 @@
 
     function truncateText() {
 
-        $('.job-offers-bloc .jobs .job').each(function () {
-            $(this).find('.title-4, p').truncate({
-                lines : 2
-            });
+        $('.job .title-4, .job p, .zoom p').truncate({
+            lines : 2
         });
 
         var selector = $('.article.big p');

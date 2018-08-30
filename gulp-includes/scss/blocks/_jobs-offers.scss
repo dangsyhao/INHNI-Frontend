@@ -1,4 +1,4 @@
-.job-offers-bloc {
+.jobs-offers-bloc {
   @include blocPadding;
   color: #fff;
   .wrapper {
@@ -14,15 +14,11 @@
     align-self: center;
   }
   .jobs {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.22px;
-    line-height: 16px;
     margin-bottom: 47.5px;
     width: 100%;
     @media screen and (min-width: 1201px) {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
     }
     @media screen and (max-width: 1200px) {
@@ -34,7 +30,7 @@
     z-index: 1;
   }
   .slick-slide {
-    margin: 0px 15px;
+    margin: 0 15px;
     & > div {
       display: flex;
       align-items: center;
@@ -73,9 +69,6 @@
   }
   .job {
     display: block !important;
-    border-radius: 2px;
-    background: linear-gradient(270deg, $maincolor-2 0%, $maincolor-2-gradient-combination 97.08%);
-    padding: 16px 20px 18px;
     @media screen and (min-width: 1201px) {
       margin-right: 28px;
       width: calc((100% - 3 * 28px) / 4);
@@ -85,55 +78,6 @@
     }
     @media screen and (max-width: 1200px) {
       width: 290px !important;
-    }
-    .title-4 {
-      height: 42px;
-      overflow: hidden;
-      margin-bottom: 15px;
-    }
-    .details {
-      line-height: 20px;
-      height: 60px;
-      overflow: hidden;
-      margin-bottom: 20px;
-      li {
-        @include text-ellipsis;
-        &:before {
-          margin-right: 10px;
-          @include fontello;
-        }
-        &.school {
-          &:before {
-            content: '\E806';
-          }
-        }
-        &.location {
-          &:before {
-            content: '\E805';
-          }
-        }
-        &.money {
-          &:before {
-            content: '\E807';
-            font-size: 10px;
-          }
-        }
-      }
-    }
-    p {
-      height: 32px;
-      overflow: hidden;
-    }
-    .link-arrow-align-right {
-      margin-top: 20px;
-      height: 16px;
-      overflow: hidden;
-    }
-    &:hover,
-    &:active {
-      .link-arrow-align-right {
-        padding-right: 30px;
-      }
     }
   }
 }

@@ -117,6 +117,12 @@
       "search": [
         "euro"
       ]
+    },
+    {
+      "uid": "3711151b8b34536498e2a7f4d5188ed2",
+      "css": "play",
+      "code": 61455,
+      "src": "mfglabs"
     }
   ]
 }
