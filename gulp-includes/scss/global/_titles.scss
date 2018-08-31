@@ -1,7 +1,7 @@
 .title-1 {
   font-family: $font-4;
   font-size: 38px;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: -0.05px;
   line-height: 35px;
   @media screen and (max-width: $tablet-medium) {
@@ -96,5 +96,41 @@
   @media screen and (max-width: $tablet-small) {
     font-size: 16px;
     line-height: 20px;
+  }
+}
+
+.title-6 {
+  font-family: $font-4;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.27px;
+  line-height: 23px;
+  @media screen and (max-width: $tablet-medium) {
+    font-size: 17px;
+    line-height: 22px;
+  }
+  @media screen and (max-width: $tablet-small) {
+    font-size: 16px;
+    line-height: 21px;
+  }
+  &.blue-polygon {
+    position: relative;
+    padding-left: 21px;
+    span {
+      position: relative;
+      z-index: 2;
+    }
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 16px;
+      width: 91px;
+      background-color: rgba($textcolor-3, 0.15);
+      left: 5px;
+      bottom: -4px;
+      z-index: 1;
+      transform: skewX(-20deg);
+    }
   }
 }

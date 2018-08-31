@@ -93,9 +93,8 @@
       cursor: pointer;
       transition: background-color 0.3s ease-in-out;
       background: $textcolor-3;
-      margin-right: 8.25px;
-      &:last-of-type {
-        margin-right: 0;
+      &:not(:last-of-type) {
+        margin-right: 8.25px;
       }
       &.slick-active {
         background: $maincolor-1;

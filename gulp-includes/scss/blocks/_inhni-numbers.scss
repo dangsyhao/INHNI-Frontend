@@ -65,9 +65,8 @@
     @media screen and (min-width: $desktop-small + 1) {
       height: 213px;
       width: calc((100% - 213px - 4 * 30px) / 4);
-      margin-right: 30px;
-      &:last-of-type {
-        margin-right: 0;
+      &:not(:last-of-type) {
+        margin-right: 30px;
       }
     }
     &:not(.circle) {
@@ -81,9 +80,8 @@
         justify-content: center;
       }
       @media screen and (max-width: $tablet-medium) {
-        margin-bottom: 5px;
-        &:last-of-type {
-          margin-bottom: 0;
+        &:not(:last-of-type) {
+          margin-bottom: 5px;
         }
       }
       @media screen and (max-width: $tablet-small) {

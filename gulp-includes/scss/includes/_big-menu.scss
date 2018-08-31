@@ -20,7 +20,9 @@
     align-items: center;
     justify-content: center;
     & > li {
-      margin-right: 45px;
+      &:not(:last-of-type) {
+        margin-right: 45px;
+      }
       &:nth-child(1) {
         @include bigMenuColor($maincolor-entreprises);
       }
@@ -82,9 +84,6 @@
             }
           }
         }
-      }
-      &:last-of-type {
-        margin-right: 0;
       }
       &:hover,
       &:active {
@@ -171,10 +170,9 @@
       letter-spacing: 0.16px;
       line-height: 19px;
       li {
-        margin-bottom: 18px;
         font-weight: 700;
-        &:last-of-type {
-          margin-bottom: 0;
+        &:not(:last-of-type) {
+          margin-bottom: 18px;
         }
         a {
           transition: color 0.3s ease-in-out;

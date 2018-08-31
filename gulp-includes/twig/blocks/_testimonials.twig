@@ -1,6 +1,6 @@
 <div class="testimonials-bloc">
     <div class="decoration">
-        {% include '../includes/_logos.twig' %}
+        {% include '../components/_logos.twig' %}
         <div class="lazy_responsive_image"
              style="background-image: url('{{ img_url }}placeholder.gif');"
              data-lazy-src-0-1200="" {# leave this empty #}
@@ -14,7 +14,7 @@
         <div class="wrapper">
             <div class="testimonials">
                 {% for i in 1..5 %}
-                    {% include '../includes/_testimonial.twig' %}
+                    {% include '../components/_testimonial.twig' %}
                 {% endfor %}
             </div>
         </div>

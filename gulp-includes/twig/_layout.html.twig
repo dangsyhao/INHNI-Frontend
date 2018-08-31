@@ -47,7 +47,7 @@
         {% block social_meta %}
             <meta name="og:type" content="website">
             <meta name="og:title" content="{% block title %}{{ project_name }}{% endblock %}">
-            <meta name="og:site_name" content="{{ project_name }}">
+            <meta name="og:site_name" content="{{ project_short_name }}">
             <meta name="og:description" content="{% block description %}{{ page_description }}{% endblock %}">
             <meta name="og:image" content="{{ img_url }}screenshot.png?{{ random }}">
             <meta name="og:locale" content="{{ lang_code_extended }}">
@@ -122,7 +122,7 @@
     {% block header %}
         <header id="header">
             <div class="container">
-                {% include 'includes/_logos.twig' %}
+                {% include 'components/_logos.twig' %}
                 {% include 'includes/_big_menu.twig' %}
                 {% include 'includes/_little_menu.twig' %}
                 <form method="POST" class="searchForm_header" action="#">
@@ -140,6 +140,37 @@
             {% block content %}{% endblock %}
         </main>
         {% block post_content %}{% endblock %}
+    {% endblock %}
+    {% block footer %}
+        <footer id="footer">
+            <div class="footer-top">
+                <div class="wrapper">
+                    <div class="footer-top-left">
+                        {% include 'includes/_footer-contact.twig' %}
+                    </div>
+                    <div class="footer-top-right">
+                        <div class="footer-top-right-top">
+                            {% include 'includes/_footer-little-menu-1.twig' %}
+                            {% include 'includes/_footer-little-menu-2.twig' %}
+                            <div class="footer-top-right-top-right">
+                                <p class="title-6 blue-polygon">Suivez-nous !</p>
+                                {% include 'includes/_footer-social-networks.twig' %}
+                            </div>
+                        </div>
+                        <div class="footer-top-right-bottom">
+                            <p class="title-6 blue-polygon">Partenaires certifiants</p>
+                            {% include 'includes/_footer-partners.twig' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="wrapper">
+                    {% include 'includes/_footer-big-menu.twig' %}
+                    <p class="copyright">{{ project_short_name }} © Copyright 2018</p>
+                </div>
+            </div>
+        </footer>
     {% endblock %}
     {% block javascripts %}
         {% for js_file in js_files %}
