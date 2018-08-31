@@ -26,6 +26,14 @@
             });
             lazyObserver.observe(container.get(0));
         }
+        detectNewHtmlElements([
+            {
+                selector : '.inhni-numbers-bloc .numbers',
+                callback : function (el) {
+                    lazyObserver.observe(el.get(0));
+                }
+            }
+        ]);
     });
 
     function initNumbersAndCanvas() {

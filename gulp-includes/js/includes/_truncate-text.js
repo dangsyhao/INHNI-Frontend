@@ -14,6 +14,14 @@
         setInterval(function () {
             truncateText();
         }, 5000);
+        detectNewHtmlElements([
+            {
+                selector : '.job .title-4, .job p, .zoom p, .article.big p',
+                callback : function () {
+                    truncateText();
+                }
+            }
+        ]);
     });
 
     $(window).on('load resizeend', function () {

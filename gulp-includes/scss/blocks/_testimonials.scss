@@ -60,6 +60,15 @@
     background: #F7F8FA;
     padding: 40px 0 24px;
   }
+  .testimonials {
+    padding: 0 30px;
+  }
+  .testimonial {
+    margin: 0 auto;
+    & + .testimonial {
+      display: none;
+    }
+  }
   .slick-slide {
     display: flex;
     align-items: center;
@@ -104,7 +113,7 @@
     width: 15px;
     position: absolute;
     top: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateY(-50%);
     display: flex;
     align-items: center;
     justify-content: center;

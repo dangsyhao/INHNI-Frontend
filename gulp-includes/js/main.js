@@ -56,7 +56,7 @@ const config = {
         /* - jQuery, unless you set the jQuery option above to false */
         /* - Modernizr test (test/dom/mutationObserver) */
         /* - gulp-includes/core/plugins/detect-new-html-elements/detect-new-html-elements.js */
-        detectNewHtmlElements : false,
+        detectNewHtmlElements : true,
 
         /* Refer to documentation, Plugin: Lazyload Iframe */
         /* If this option is enabled, the following dependencies will be included in the bundle : */

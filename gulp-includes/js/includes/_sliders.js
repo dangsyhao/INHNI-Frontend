@@ -11,6 +11,14 @@
 
     $(document).ready(function () {
         createSlick();
+        detectNewHtmlElements([
+            {
+                selector : '.jobs-offers-bloc .jobs, .jobs-zoom-bloc .zooms, .testimonials-bloc .testimonials',
+                callback : function () {
+                    createSlick();
+                }
+            }
+        ]);
     });
 
     $(window).on('resizeend', function () {
@@ -68,10 +76,10 @@
             slider.not('.slick-initialized').slick(
                 {
                     cssEase : 'ease-in-out',
-                    slidesToShow: 1,
-                    dots: true,
-                    fade: true,
-                    centerPadding: '0px',
+                    slidesToShow : 1,
+                    dots : true,
+                    fade : true,
+                    centerPadding : '0px',
                     variableWidth : false,
                     swipeToSlide : true,
                     centerMode : true,
