@@ -90,6 +90,27 @@
 
         }
         /* ########################################################################################### */
+        /* ----------------- Slider || Bloc jobs zoom (tablet + mobile) ----------------- */
+        /* ########################################################################################### */
+        slider = $('.partners-bloc .partners');
+        slide = $('.partners-bloc .partners .partner');
+        if (slide.length > 1) {
+            if (gulp_display.getWidth() <= 1200) {
+                slider.not('.slick-initialized').slick(
+                    {
+                        cssEase : 'ease-in-out',
+                        variableWidth : true,
+                        swipeToSlide : true,
+                        centerMode : true,
+                        prevArrow : '<button class="slick-prev slick-arrow"></button>',
+                        nextArrow : '<button class="slick-next slick-arrow"></button>'
+                    }
+                );
+            } else {
+                slider.filter('.slick-initialized').slick('unslick');
+            }
+        }
+        /* ########################################################################################### */
     }
 
 })(jQuery);

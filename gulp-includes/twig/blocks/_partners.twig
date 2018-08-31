@@ -1,0 +1,16 @@
+<section class="partners-bloc">
+    <div class="wrapper">
+        <h3 class="title-1 blue-polygon">
+            <span>Partenaires</span>
+        </h3>
+        <div class="partners">
+            {% for i in 1..7 %}
+                <a class="partner" href="http://www.qualipropre.org/" target="_blank"
+                   title="Accéder au site de Qualipropre">
+                    <img class="lazy_image" src="{{ img_url }}placeholder.gif" alt="Qualipropre"
+                         data-lazy-src="{{ img_url }}partner.png"/>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
