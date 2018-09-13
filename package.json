@@ -23,6 +23,7 @@
     "not unreleased versions"
   ],
   "devDependencies": {
+    "@fancyapps/fancybox": "^3.4.1",
     "autoprefixer": "^9.1.3",
     "bourbon": "^5.1.0",
     "browser-sync": "^2.24.7",
