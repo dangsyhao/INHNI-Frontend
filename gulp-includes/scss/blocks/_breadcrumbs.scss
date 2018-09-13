@@ -1,0 +1,39 @@
+#breadcrumbs{
+  padding: 20px 0;
+  background-color: $color-gray;
+  border-bottom: 1px solid $colorline2;
+  border-top: 1px solid $colorline2;
+  .breadcrumb{
+    color: $textcolor-1;
+    font-size: 13px;
+    a{
+      color: $textcolor-1;
+      position: relative;
+      margin-right: 7px;
+      margin-left: 7px;
+      &:before{
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: $colorline;
+      }
+    }
+    > a{
+      margin-left: 0;
+    }
+    span{
+      > span{
+        margin-left: 7px;
+      }
+      > a {
+        &+ span {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
