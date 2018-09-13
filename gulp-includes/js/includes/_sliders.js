@@ -67,9 +67,23 @@
 
     function createSlick() {
         /* ########################################################################################### */
+        /* ----------------- Slider || search-formation-bloc (tablet + mobile) ----------------- */
+        var slider = $('.search-formation-bloc .search-slider');
+        var slide = $('.search-formation-bloc .search-slider .item');
+        if (slide.length > 1) {
+            slider.not('.slick-initialized').slick(
+                {
+                    dot: false,
+                    arrows: false,
+                    autoplaySpeed: 5000,
+                    autoplay: true
+                }
+            );
+        }
+        /* ########################################################################################### */
         /* ----------------- Slider || Bloc jobs offers (tablet + mobile) ----------------- */
-        var slider = $('.jobs-offers-bloc .jobs');
-        var slide = $('.jobs-offers-bloc .jobs .job');
+        slider = $('.jobs-offers-bloc .jobs');
+        slide = $('.jobs-offers-bloc .jobs .job');
         if (slide.length > 1) {
             if (gulp_display.getWidth() <= 1200) {
                 slider.not('.slick-initialized').slick(
