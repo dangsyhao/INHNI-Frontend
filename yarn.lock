@@ -9,6 +9,10 @@
     core-js "^2.5.3"
     regenerator-runtime "^0.11.1"
 
+"@fancyapps/fancybox@^3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@fancyapps/fancybox/-/fancybox-3.4.1.tgz#4af13627407f9585a6afef25976ca8b436a6dd33"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"

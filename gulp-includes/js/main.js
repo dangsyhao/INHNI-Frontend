@@ -4,7 +4,7 @@ const config = {
     output_path : '/public/assets/js/main.js',
 
     /* Include jQuery in the bundle; true/false */
-    jQuery : true,
+    jQuery : false,
 
     /* Path to external libs (e.g. sliders, modals ...). */
     /* Most likely node_modules or includes stuffs */
@@ -14,6 +14,7 @@ const config = {
         'node_modules/intersection-observer/intersection-observer.js',
         'node_modules/truncate.js/dist/truncate.min.js',
         'gulp-includes/js/helpers/_detect-ie.js',
+        'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.js',
         'gulp-includes/js/includes/**/*.js'
     ],
 
@@ -56,7 +57,7 @@ const config = {
         /* - jQuery, unless you set the jQuery option above to false */
         /* - Modernizr test (test/dom/mutationObserver) */
         /* - gulp-includes/core/plugins/detect-new-html-elements/detect-new-html-elements.js */
-        detectNewHtmlElements : true,
+        detectNewHtmlElements : false,
 
         /* Refer to documentation, Plugin: Lazyload Iframe */
         /* If this option is enabled, the following dependencies will be included in the bundle : */

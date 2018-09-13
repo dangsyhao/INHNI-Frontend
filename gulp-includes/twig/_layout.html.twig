@@ -172,6 +172,10 @@
             </div>
         </footer>
     {% endblock %}
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
     {% block javascripts %}
         {% for js_file in js_files %}
             <script src="{{ js_file.url }}?{{ random }}" async></script>
